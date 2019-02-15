@@ -1,0 +1,15 @@
+{
+  "name": "aves",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nw",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kauvia",
+  "license": "CC-BY-NC-4.0",
+  "dependencies": {
+    "nw": "^0.36.1"
+  }
+}
