@@ -1,5 +1,5 @@
 # aves
 
-A 2D side-scrolling strategy rogue-like about cavemen.
+A 2D side-scrolling strategy rogue-like.
 
-A React UI + PIXI webgl graphics framework wrapped in NW.js(node-webkit).
+A (React UI + PIXI webgl graphics framework) ++ (Entity-Component-System based game engine) wrapped in NW.js(node-webkit).
