@@ -18,11 +18,11 @@ class GameCanvas extends Component {
 				id="game-container"
 				style={{
                     position:"absolute",
-                   top:"50px",
-                   left:"50px",
-					width: "750px",
-                    height: "550px",
-                    zIndex:"-1"
+                  // top:"50px",
+             //      left:"50px",
+		//			width: "750px",
+      //              height: "550px",
+      //              zIndex:"-1"
 				}}
 			/>
 		);

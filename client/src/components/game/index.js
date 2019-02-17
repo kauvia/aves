@@ -5,7 +5,7 @@ import GameGui from "./gui";
 class GameScreen extends Component {
 	constructor(props) {
 		super(props);
-		this.engine = new Engine;
+		this.engine = new Engine(800,600);
 		this.state={test:0}
 	}
 	componentDidMount() {

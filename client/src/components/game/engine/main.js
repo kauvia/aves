@@ -10,9 +10,9 @@ class Engine {
 		this.renderer = new PIXI.WebGLRenderer(this.SCREEN_WIDTH, this.SCREEN_HEIGHT, {
 			backgroundColor: 0x1099bb
         });
-		this.stage = new PIXI.Container();
-		this.interaction = new PIXI.interaction.InteractionManager({
-			root: this.state,
+        this.stage = new PIXI.Container();
+		this.interaction = new PIXI.interaction.InteractionManager(this.renderer,{
+			root: this.stage,
 			view: this.renderer.view
         });
 
@@ -77,7 +77,9 @@ class Engine {
        this.stage.addChild(obj.sprite);
 
        this.objArr.push(obj)
-
+       console.log(this.interaction.processInteractive)
+       console.log(this.interaction.renderer._lastObjectRendered)
+        console.log(this.interaction.hitTest(new PIXI.Point(400,300),this.stage))
     }
 
     guiObjects(){}
