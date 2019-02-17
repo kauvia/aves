@@ -16,6 +16,10 @@ class GameScreen extends Component {
 
 				this.setState({test:data})
 		}
+
+		this.engine.guiObjects = data => {
+	//		console.log(data)
+		}
 	}
 
 	guiListener=e=>{

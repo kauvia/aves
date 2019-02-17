@@ -60,8 +60,10 @@ class Engine {
            this.objArr[i].sprite.y +=(Math.random()-0.5)*5*dt;
         }
 
+        if (Math.random()>0.9){
+        this.guiUpdater(dt*60)}
 
-        this.guiUpdater(Math.random())
+        this.guiObjects({banana:{fried:{chicken:43},toilet:[1,2,4,null,false]},pen:{is:["i",["s","l"]]}})
 	}
 
 	render() {
@@ -78,6 +80,7 @@ class Engine {
 
     }
 
+    guiObjects(){}
     guiUpdater(){
     }
 
