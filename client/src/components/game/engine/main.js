@@ -28,35 +28,24 @@ class Engine {
     }
 
 	loadMedia() {
-        this.testSprite=new Sprite;
-        this.testSprite.sprite.scale.set(0.3,0.3)
-       this.stage.addChild(this.testSprite.sprite)
+
     }
 
 	update(dt) {
 		//Trottle interation updates
         this.interaction.update(dt);
         // Update game stuff here
-        this.testSprite.sprite.rotation += ((Math.random()-0.5)/2)*dt;
-
-        this.testSprite.sprite.x < 0 ? this.testSprite.sprite.x = 750:
-        this.testSprite.sprite.x > 750 ? this.testSprite.sprite.x = 0:
-        this.testSprite.sprite.x +=(Math.random()-0.5)*5*dt;
-
-        this.testSprite.sprite.y < 0 ? this.testSprite.sprite.y = 550:
-        this.testSprite.sprite.y > 550 ? this.testSprite.sprite.y = 0:
-        this.testSprite.sprite.y +=(Math.random()-0.5)*5*dt;
 
         for (let i in this.objArr){
             
            this.objArr[i].sprite.rotation += ((Math.random()-0.5)/2)*dt;
 
-           this.objArr[i].sprite.x < 0 ? this.testSprite.sprite.x = 750:
-           this.objArr[i].sprite.x > 750 ? this.testSprite.sprite.x = 0:
+           this.objArr[i].sprite.x < 25 ? this.objArr[i].sprite.x = 725:
+           this.objArr[i].sprite.x > 750 ? this.objArr[i].sprite.x = 50:
            this.objArr[i].sprite.x +=(Math.random()-0.5)*5*dt;
     
-           this.objArr[i].sprite.y < 0 ? this.testSprite.sprite.y = 550:
-           this.objArr[i].sprite.y > 550 ? this.testSprite.sprite.y = 0:
+           this.objArr[i].sprite.y < 25 ? this.objArr[i].sprite.y = 525:
+           this.objArr[i].sprite.y > 575 ? this.objArr[i].sprite.y = 50:
            this.objArr[i].sprite.y +=(Math.random()-0.5)*5*dt;
         }
 
@@ -121,7 +110,7 @@ class Sprite{
         this.sprite.interactive=true;
         this.sprite.buttonMode=true;
         this.sprite.on('mouseover',()=>{
-            this.sprite.position.set(Math.random()*750,Math.random()*550)
+            this.sprite.position.set(Math.random()*750+25,Math.random()*550+25)
         })
 
 
