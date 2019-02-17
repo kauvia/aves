@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 
 class Engine {
-	constructor(SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600) {
+	constructor(SCREEN_WIDTH = 750, SCREEN_HEIGHT = 550) {
 		//Screen size
 		this.SCREEN_WIDTH = SCREEN_WIDTH;
 		this.SCREEN_HEIGHT = SCREEN_HEIGHT;
@@ -14,13 +14,16 @@ class Engine {
 		this.interaction = new PIXI.interaction.InteractionManager({
 			root: this.state,
 			view: this.renderer.view
-		});
-		this.rendererContainer = document.getElementById("game-container");
+        });
 
         this.oldTime=Date.now()
+        
+        //entity arrs
+        this.objArr=[];
     }
 
 	initialize() {
+		this.rendererContainer = document.getElementById("game-container");
         this.rendererContainer.appendChild(this.renderer.view)
     }
 
@@ -34,21 +37,50 @@ class Engine {
 		//Trottle interation updates
         this.interaction.update(dt);
         // Update game stuff here
-        this.testSprite.sprite.rotation += (Math.random()/5)*dt;
+        this.testSprite.sprite.rotation += ((Math.random()-0.5)/2)*dt;
 
-        this.testSprite.sprite.x < 0 ? this.testSprite.sprite.x = 0:
-        this.testSprite.sprite.x > 800 ? this.testSprite.sprite.x = 800:
+        this.testSprite.sprite.x < 0 ? this.testSprite.sprite.x = 750:
+        this.testSprite.sprite.x > 750 ? this.testSprite.sprite.x = 0:
         this.testSprite.sprite.x +=(Math.random()-0.5)*5*dt;
 
-        this.testSprite.sprite.y < 0 ? this.testSprite.sprite.y = 0:
-        this.testSprite.sprite.y > 600 ? this.testSprite.sprite.y = 600:
+        this.testSprite.sprite.y < 0 ? this.testSprite.sprite.y = 550:
+        this.testSprite.sprite.y > 550 ? this.testSprite.sprite.y = 0:
         this.testSprite.sprite.y +=(Math.random()-0.5)*5*dt;
+
+        for (let i in this.objArr){
+            
+           this.objArr[i].sprite.rotation += ((Math.random()-0.5)/2)*dt;
+
+           this.objArr[i].sprite.x < 0 ? this.testSprite.sprite.x = 750:
+           this.objArr[i].sprite.x > 750 ? this.testSprite.sprite.x = 0:
+           this.objArr[i].sprite.x +=(Math.random()-0.5)*5*dt;
+    
+           this.objArr[i].sprite.y < 0 ? this.testSprite.sprite.y = 550:
+           this.objArr[i].sprite.y > 550 ? this.testSprite.sprite.y = 0:
+           this.objArr[i].sprite.y +=(Math.random()-0.5)*5*dt;
+        }
+
+
+        this.guiUpdater(Math.random())
 	}
 
 	render() {
         //render stuff here
         this.renderer.render(this.stage);
     }
+
+    testSpawner(){
+        let obj=new Sprite;
+        obj.sprite.scale.set(0.3,0.3);
+       this.stage.addChild(obj.sprite);
+
+       this.objArr.push(obj)
+
+    }
+
+    guiUpdater(){
+    }
+
 
 	mainLoop=()=> {
 		// set up RAF
@@ -84,7 +116,7 @@ class Sprite{
         this.sprite.interactive=true;
         this.sprite.buttonMode=true;
         this.sprite.on('mouseover',()=>{
-            this.sprite.position.set(Math.random()*800,Math.random()*600)
+            this.sprite.position.set(Math.random()*750,Math.random()*550)
         })
 
 
