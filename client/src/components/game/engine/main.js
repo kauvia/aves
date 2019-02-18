@@ -1,7 +1,10 @@
 import * as PIXI from "pixi.js";
+import Entity from "./ECS/Entities/entity";
+import * as Components from "./ECS/Components/index";
+import RenderSys from "./ECS/Systems/renderSys";
 
 class Engine {
-	constructor(SCREEN_WIDTH = 750, SCREEN_HEIGHT = 550) {
+	constructor(SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600) {
 		//Screen size
 		this.SCREEN_WIDTH = SCREEN_WIDTH;
 		this.SCREEN_HEIGHT = SCREEN_HEIGHT;
@@ -20,39 +23,70 @@ class Engine {
         
         //entity arrs
         this.objArr=[];
+        this.camera=null;
     }
 
 	initialize() {
 		this.rendererContainer = document.getElementById("game-container");
         this.rendererContainer.appendChild(this.renderer.view)
-    }
+
+        let fish = new Entity;
+        fish.addComponent(new Components.Position(600,300));
+        fish.Sprite = new Sprite;
+        this.objArr.push(fish)
+
+        this.camera = new Entity;
+        this.camera.addComponent(new Components.Position(400,300))
+
+        this.RenderSys = new RenderSys(this.objArr,this.camera,this.SCREEN_WIDTH,this.SCREEN_HEIGHT)
+
+        let cat = new Entity;
+        cat.addComponent(new Components.Position(700,300));
+        cat.Sprite = new Sprite;
+        this.objArr.push(cat)
+
+        let pie = new Entity;
+        pie.addComponent(new Components.Position(300,300));
+        pie.Sprite= new Sprite;
+        this.objArr.push(pie)
+
+        for (let i in this.objArr){
+            this.stage.addChild(this.objArr[i].Sprite.sprite)
+        }
+
+        console.log(this.stage.children  )
+  }
 
 	loadMedia() {
 
     }
 
+    testSpawner(){
+
+    }
 	update(dt) {
 		//Trottle interation updates
         this.interaction.update(dt);
         // Update game stuff here
 
         for (let i in this.objArr){
-            
-           this.objArr[i].sprite.rotation += ((Math.random()-0.5)/2)*dt;
-
-           this.objArr[i].sprite.x < 25 ? this.objArr[i].sprite.x = 725:
-           this.objArr[i].sprite.x > 750 ? this.objArr[i].sprite.x = 50:
-           this.objArr[i].sprite.x +=(Math.random()-0.5)*5*dt;
+           this.objArr[i].components.Position.x += Math.random()*2-1;
+           this.objArr[i].components.Position.y+= Math.random()*2-1;
     
-           this.objArr[i].sprite.y < 25 ? this.objArr[i].sprite.y = 525:
-           this.objArr[i].sprite.y > 575 ? this.objArr[i].sprite.y = 50:
-           this.objArr[i].sprite.y +=(Math.random()-0.5)*5*dt;
-        }
+
+    
+    
+         }
+
+
+        this.RenderSys.update()
+
+
+
 
         if (Math.random()>0.9){
-        this.guiUpdater(dt*60)}
+        this.guiUpdater(1/dt*60)}
 
-        this.guiObjects({banana:{fried:{chicken:43},toilet:[1,2,4,null,false]},pen:{is:["i",["s","l"]]}})
 	}
 
 	render() {
@@ -60,18 +94,7 @@ class Engine {
         this.renderer.render(this.stage);
     }
 
-    testSpawner(){
-        let obj=new Sprite;
-        obj.sprite.scale.set(0.3,0.3);
-       this.stage.addChild(obj.sprite);
 
-       this.objArr.push(obj)
-       console.log(this.interaction.processInteractive)
-       console.log(this.interaction.renderer._lastObjectRendered)
-        console.log(this.interaction.hitTest(new PIXI.Point(400,300),this.stage))
-    }
-
-    guiObjects(){}
     guiUpdater(){
     }
 
@@ -107,11 +130,12 @@ class Sprite{
         this.sprite= PIXI.Sprite.fromImage('../assets/logo.png');
         this.sprite.anchor.set(0.5);
         this.sprite.position.set(400,300);
-        this.sprite.interactive=true;
-        this.sprite.buttonMode=true;
-        this.sprite.on('mouseover',()=>{
-            this.sprite.position.set(Math.random()*750+25,Math.random()*550+25)
-        })
+        this.sprite.scale.set(0.3,0.3)
+        // this.sprite.interactive=true;
+        // this.sprite.buttonMode=true;
+        // this.sprite.on('mouseover',()=>{
+        //     this.sprite.position.set(Math.random()*750+25,Math.random()*550+25)
+        // })
 
 
     }

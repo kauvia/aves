@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Engine from "./engine/main";
 
 class GameCanvas extends Component {
 	constructor(props) {
