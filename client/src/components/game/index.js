@@ -10,7 +10,6 @@ class GameScreen extends Component {
 	}
 	componentDidMount() {
 		this.engine.initialize();
-		this.engine.loadMedia();
 		this.engine.runLoop();
 		this.engine.guiUpdater = data => {
 			this.setState({ test: data });
