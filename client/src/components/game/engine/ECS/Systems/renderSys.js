@@ -18,8 +18,20 @@ class RenderSys {
 			let objX = this.objArr[i].components.Position.x;
 			let objY = this.objArr[i].components.Position.y;
 
-			this.objArr[i].Sprite.sprite.x = objX - camX + this.SCREEN_WIDTH / 2;
-			this.objArr[i].Sprite.sprite.y = objY - camY + this.SCREEN_HEIGHT / 2;
+			this.objArr[i].components.Sprite.idle.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].components.Sprite.idle.y = objY - camY + this.SCREEN_HEIGHT / 2;
+
+
+			this.objArr[i].components.Sprite.moving.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].components.Sprite.moving.y = objY - camY + this.SCREEN_HEIGHT / 2;
+	
+			this.objArr[i].components.Sprite.attacking.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].components.Sprite.attacking.y = objY - camY + this.SCREEN_HEIGHT / 2;
+
+			this.objArr[i].components.Sprite.death.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].components.Sprite.death.y = objY - camY + this.SCREEN_HEIGHT / 2;
+	
+	
 		}
 
 		for (let i in this.backgroundArr) {
