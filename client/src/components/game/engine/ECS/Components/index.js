@@ -58,4 +58,11 @@ class Size {
 	}
 }
 
-export { Position, Camera, Sprite, Movement, Faction, Weapon, Size };
+class Velocity{
+    constructor(x=2){
+        this.name="Velocity";
+        this.x=x
+    }
+}
+
+export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity };

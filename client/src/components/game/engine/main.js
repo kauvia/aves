@@ -42,6 +42,10 @@ class Engine {
 		this.camera = null;
 		this.player = null;
 
+		this.backgroundStage = new PIXI.Container;
+		this.unitStage = new PIXI.Container;
+		this.foregroundStage = new PIXI.Container;
+
 		this.loader = new PIXI.loaders.Loader();
 		this.keyboardKeys = {};
 	}
@@ -61,6 +65,7 @@ class Engine {
 	loadSystems() {
 		this.camera = new Entity();
 		this.camera.addComponent(new Components.Position(400, 300));
+		this.camera.addComponent(new Components.Velocity())
 
 		this.RenderSys = new RenderSys(
 			this.objArr,
@@ -82,7 +87,7 @@ class Engine {
 		this.SpriteUpdateSys = new SpriteUpdateSys(
 			this.objArr,
 			this.backgroundArr,
-			this.stage
+			this.unitStage
 		);
 
 		this.NpcMovementSys = new NpcMovementSys(this.objArr);
@@ -100,68 +105,64 @@ class Engine {
 			.load(this.onAssetLoaded);
 
 		// //ADDING BACKGGROUND
-		// let backTreesTexture = PIXI.Texture.fromImage(
-		// 	"../assets/parallax-forest-back-trees.png"
-		// );
-		// this.tilingBackTreesSprite = new PIXI.extras.TilingSprite(
-		// 	backTreesTexture,
-		// 	800,
-		// 	160
-		// );
-		// //	this.tilingBackTreesSprite.scale.set(1.5, 1.5);
-		// this.tilingBackTreesSprite.y = 200;
+		let backTreesTexture = PIXI.Texture.fromImage(
+			"../assets/parallax-forest-back-trees.png"
+		);
+		this.tilingBackTreesSprite = new PIXI.extras.TilingSprite(
+			backTreesTexture,
+			800,
+			160
+		);
+		//	this.tilingBackTreesSprite.scale.set(1.5, 1.5);
+		this.tilingBackTreesSprite.y = 200;
 
-		// let lightingTexture = PIXI.Texture.fromImage(
-		// 	"../assets/parallax-forest-lights.png"
-		// );
-		// this.tilingLightSprite = new PIXI.extras.TilingSprite(
-		// 	lightingTexture,
-		// 	800,
-		// 	160
-		// );
-		// //	this.tilingLightSprite.scale.set(1.5, 1.5);
-		// this.tilingLightSprite.y = 200;
+		let lightingTexture = PIXI.Texture.fromImage(
+			"../assets/parallax-forest-lights.png"
+		);
+		this.tilingLightSprite = new PIXI.extras.TilingSprite(
+			lightingTexture,
+			800,
+			160
+		);
+		//	this.tilingLightSprite.scale.set(1.5, 1.5);
+		this.tilingLightSprite.y = 200;
 
-		// let midTreesTexture = PIXI.Texture.fromImage(
-		// 	"../assets/parallax-forest-middle-trees.png"
-		// );
-		// this.tilingMidTreesSprite = new PIXI.extras.TilingSprite(
-		// 	midTreesTexture,
-		// 	800,
-		// 	160
-		// );
-		// //	this.tilingMidTreesSprite.scale.set(1.5, 1.5);
-		// this.tilingMidTreesSprite.y = 200;
+		let midTreesTexture = PIXI.Texture.fromImage(
+			"../assets/parallax-forest-middle-trees.png"
+		);
+		this.tilingMidTreesSprite = new PIXI.extras.TilingSprite(
+			midTreesTexture,
+			800,
+			160
+		);
+		//	this.tilingMidTreesSprite.scale.set(1.5, 1.5);
+		this.tilingMidTreesSprite.y = 200;
 
-		// let frontTreesTexture = PIXI.Texture.fromImage(
-		// 	"../assets/parallax-forest-front-trees.png"
-		// );
-		// this.tilingFrontTreesSprite = new PIXI.extras.TilingSprite(
-		// 	frontTreesTexture,
-		// 	800,
-		// 	160
-		// );
-		// //	this.tilingFrontTreesSprite.scale.set(1.5, 1.5);
-		// this.tilingFrontTreesSprite.y = 200;
+		let frontTreesTexture = PIXI.Texture.fromImage(
+			"../assets/parallax-forest-front-trees.png"
+		);
+		this.tilingFrontTreesSprite = new PIXI.extras.TilingSprite(
+			frontTreesTexture,
+			800,
+			160
+		);
+		//	this.tilingFrontTreesSprite.scale.set(1.5, 1.5);
+		this.tilingFrontTreesSprite.y = 200;
 
-		// //	this.backgroundArr.push(this.tilingBackTreesSprite);
-		// this.backgroundArr.push(this.tilingLightSprite);
-		// this.backgroundArr.push(this.tilingMidTreesSprite);
-		// this.backgroundArr.push(this.tilingFrontTreesSprite);
+		//	this.backgroundArr.push(this.tilingBackTreesSprite);
+		this.backgroundArr.push(this.tilingLightSprite);
+		this.backgroundArr.push(this.tilingMidTreesSprite);
+		this.backgroundArr.push(this.tilingFrontTreesSprite);
 
-		// //ADDING PLAYERS AND OBJS
+		//ADDING PLAYERS AND OBJS
 
-		// this.stage.addChild(this.tilingBackTreesSprite);
+		this.backgroundStage.addChild(this.tilingBackTreesSprite);
 
-		// this.stage.addChild(this.tilingLightSprite);
+		this.backgroundStage.addChild(this.tilingLightSprite);
 
-		// this.stage.addChild(this.tilingMidTreesSprite);
+		this.backgroundStage.addChild(this.tilingMidTreesSprite);
 
-		// for (let i in this.objArr) {
-		// 	this.stage.addChild(this.objArr[i].Sprite.sprite);
-		// }
-
-		// this.stage.addChild(this.tilingFrontTreesSprite);
+		this.foregroundStage.addChild(this.tilingFrontTreesSprite);
 	}
 
 	onAssetLoaded = () => {
@@ -197,9 +198,11 @@ class Engine {
 	};
 	loadEntities = () => {
 		this.player = new Entity();
-		this.player.addComponent(new Components.Position(400, 300));
+		this.player.addComponent(new Components.Position(400, 320));
 		this.player.addComponent(new Components.Weapon());
 		this.player.addComponent(new Components.Size(32, 32));
+		this.player.addComponent(new Components.Velocity(3));
+
 		this.player.addComponent(new Components.Movement());
 		this.player.addComponent(new Components.Faction("player"));
 		this.player.addComponent(
@@ -212,10 +215,18 @@ class Engine {
 		);
 		this.objArr.push(this.player);
 
+		console.log(Object.keys(this.player.Sprite))
+	
+
+
+	//	let baba = new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames)
+
 		this.test = new Entity();
-		this.test.addComponent(new Components.Position(300, 300));
+		this.test.addComponent(new Components.Position(300, 320));
 		this.test.addComponent(new Components.Weapon());
 		this.test.addComponent(new Components.Size(32, 32));
+		this.test.addComponent(new Components.Velocity());
+
 		this.test.addComponent(new Components.Movement());
 		this.test.addComponent(new Components.Faction("enemy"));
 		this.test.addComponent(
@@ -226,10 +237,30 @@ class Engine {
 				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
 			)
 		);
-		this.objArr.push(this.test);
-		delete this.objArr[1]
+
+
 
 		this.objArr.push(this.test);
+
+		// this.fren = new Entity();
+		// this.fren.addComponent(new Components.Position(100, 300));
+		// this.fren.addComponent(new Components.Weapon());
+		// this.fren.addComponent(new Components.Size(32, 32));
+		// this.fren.addComponent(new Components.Movement());
+		// this.fren.addComponent(new Components.Faction("player"));
+		// this.fren.addComponent(
+		// 	new Components.Sprite(
+		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
+		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
+		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
+		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
+		// 	)
+		// );
+
+
+
+		// this.objArr.push(this.fren);
+
 
 		console.log(this.objArr)
 
@@ -237,8 +268,12 @@ class Engine {
 		for (let i in this.objArr) {
 			this.objArr[i].Sprite.idle.animationSpeed = 0.2;
 			this.objArr[i].Sprite.idle.play();
-			this.stage.addChild(this.objArr[i].Sprite.idle);
+			this.unitStage.addChild(this.objArr[i].Sprite.idle)
 		}
+
+		this.stage.addChild(this.backgroundStage)
+		this.stage.addChild(this.unitStage)
+		this.stage.addChild(this.foregroundStage)
 
 		this.loadSystems();
 		this.allLoaded = true;
@@ -249,10 +284,12 @@ class Engine {
 		this.interaction.update(dt);
 		this.KeyboardListenerSys.inputListener();
 		// Update game stuff here
+		this.AISys.update(dt);
+
+		//AI then move units
 
 		this.PlayerMovementSys.update(dt);
 		this.NpcMovementSys.update(dt);
-		this.AISys.update(dt);
 
 		this.SpriteUpdateSys.update();
 		this.CameraFollowSys.update();

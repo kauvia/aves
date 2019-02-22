@@ -10,10 +10,9 @@ class SpriteUpdateSys {
 		for (let i in this.objArr) {
 			//check if have varying sprites
 			if (this.objArr[i].Movement) {
-				//console.log(this.objArr[i].Movement.attacking)
+ 
 				if (this.objArr[i].Movement.attacking) {
 		
-
 					this.stage.removeChild(this.objArr[i].Sprite.moving);
 					this.stage.removeChild(this.objArr[i].Sprite.idle);
 					if (
@@ -25,6 +24,7 @@ class SpriteUpdateSys {
 						} else {
 							this.objArr[i].Sprite.attacking.scale.x = 1;
 						}
+
 						this.objArr[i].Sprite.attacking.animationSpeed = 0.2;
 						this.objArr[i].Sprite.attacking.play();
 						this.stage.addChild(this.objArr[i].Sprite.attacking);
@@ -72,6 +72,13 @@ class SpriteUpdateSys {
 						}
 					}
 				}
+
+				//Update prev Info
+				this.objArr[i].Movement.prevDirection = this.objArr[i].Movement.direction;
+				this.objArr[i].Movement.prevIdle = this.objArr[i].Movement.idle;
+				this.objArr[i].Movement.prevAttacking = this.objArr[i].Movement.attacking;
+				this.objArr[i].Movement.idle = true;
+	
 			}
 		}
 	}
