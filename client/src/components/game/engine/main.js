@@ -8,6 +8,9 @@ import PlayerMovementSys from "./ECS/Systems/playerMovementSys";
 import CameraFollowSys from "./ECS/Systems/cameraFollowSys";
 import SpriteUpdateSys from "./ECS/Systems/spriteUpdateSys";
 import NpcMovementSys from "./ECS/Systems/npcMovementSys";
+import AISys from "./ECS/Systems/aiSys";
+import { doesNotReject } from "assert";
+
 class Engine {
 	constructor(SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600) {
 		//Screen size
@@ -82,7 +85,8 @@ class Engine {
 			this.stage
 		);
 
-		this.NpcMovementSys = new NpcMovementSys(this.objArr)
+		this.NpcMovementSys = new NpcMovementSys(this.objArr);
+		this.AISys = new AISys(this.objArr);
 	}
 	loadMedia() {
 		console.log("loading media");
@@ -194,8 +198,10 @@ class Engine {
 	loadEntities = () => {
 		this.player = new Entity();
 		this.player.addComponent(new Components.Position(400, 300));
+		this.player.addComponent(new Components.Weapon());
+		this.player.addComponent(new Components.Size(32, 32));
 		this.player.addComponent(new Components.Movement());
-		this.player.addComponent(new Components.Faction("player"))
+		this.player.addComponent(new Components.Faction("player"));
 		this.player.addComponent(
 			new Components.Sprite(
 				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
@@ -208,8 +214,10 @@ class Engine {
 
 		this.test = new Entity();
 		this.test.addComponent(new Components.Position(300, 300));
+		this.test.addComponent(new Components.Weapon());
+		this.test.addComponent(new Components.Size(32, 32));
 		this.test.addComponent(new Components.Movement());
-		this.test.addComponent(new Components.Faction("enemy"))
+		this.test.addComponent(new Components.Faction("enemy"));
 		this.test.addComponent(
 			new Components.Sprite(
 				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
@@ -219,20 +227,17 @@ class Engine {
 			)
 		);
 		this.objArr.push(this.test);
+		delete this.objArr[1]
 
+		this.objArr.push(this.test);
 
-		this.test.components.Movement.prevAttacking=true;
-		this.test.components.Movement.attacking=true;
-			this.test.components.Sprite.attacking.animationSpeed=0.2;
-			this.test.components.Sprite.attacking.play();
-			this.stage.addChild(this.test.components.Sprite.attacking);
-
+		console.log(this.objArr)
 
 		// add objs to stage
 		for (let i in this.objArr) {
-			this.objArr[i].components.Sprite.idle.animationSpeed = 0.2;
-			this.objArr[i].components.Sprite.idle.play();
-			this.stage.addChild(this.objArr[i].components.Sprite.idle);
+			this.objArr[i].Sprite.idle.animationSpeed = 0.2;
+			this.objArr[i].Sprite.idle.play();
+			this.stage.addChild(this.objArr[i].Sprite.idle);
 		}
 
 		this.loadSystems();
@@ -246,7 +251,8 @@ class Engine {
 		// Update game stuff here
 
 		this.PlayerMovementSys.update(dt);
-		this.NpcMovementSys.update(dt)
+		this.NpcMovementSys.update(dt);
+		this.AISys.update(dt);
 
 		this.SpriteUpdateSys.update();
 		this.CameraFollowSys.update();
@@ -288,19 +294,6 @@ class Engine {
 	};
 	runLoop() {
 		this.mainLoop();
-	}
-}
-
-class Sprite {
-	constructor(imgUrl) {
-		this.sprite = PIXI.Sprite.fromImage(imgUrl);
-		this.sprite.anchor.set(0.5);
-		this.sprite.position.set(400, 300);
-		// this.sprite.interactive=true;
-		// this.sprite.buttonMode=true;
-		// this.sprite.on('mouseover',()=>{
-		//     this.sprite.position.set(Math.random()*750+25,Math.random()*550+25)
-		// })
 	}
 }
 

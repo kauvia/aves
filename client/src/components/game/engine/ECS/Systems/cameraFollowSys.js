@@ -6,7 +6,7 @@ class CameraFollowSys {
 		this.camera = camera;
 	}
 	update() {
-		this.camera.components.Position.x = this.target.components.Position.x;
+		this.camera.Position.x = this.target.Position.x;
 	}
 }
 

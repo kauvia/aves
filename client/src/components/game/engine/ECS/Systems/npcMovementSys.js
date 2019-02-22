@@ -6,7 +6,7 @@ class NpcMovementSys {
 
 	update(dt) {
         for (let i in this.objArr){
-            if (this.objArr[i].components.Faction.belongsTo != "player"){
+            if (this.objArr[i].Faction.belongsTo != "player"){
                 this.moveEntity(dt,i)
             }
         }
@@ -14,11 +14,11 @@ class NpcMovementSys {
     }
     
     moveEntity(dt,i){
-		this.objArr[i].components.Movement.prevDirection = this.objArr[i].components.Movement.direction;
-        this.objArr[i].components.Movement.prevIdle =this.objArr[i].components.Movement.idle;
-        this.objArr[i].components.Movement.prevAttacking =this.objArr[i].components.Movement.attacking;
+		this.objArr[i].Movement.prevDirection = this.objArr[i].Movement.direction;
+        this.objArr[i].Movement.prevIdle =this.objArr[i].Movement.idle;
+        this.objArr[i].Movement.prevAttacking =this.objArr[i].Movement.attacking;
    
-        this.objArr[i].components.Movement.idle = true;
+        this.objArr[i].Movement.idle = true;
 
     }
 }

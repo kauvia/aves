@@ -7,7 +7,8 @@ class Entity {
 	}
 
 	addComponent(component) {
-		this.components[component.name] = component;
+		this[component.name]=component;
+//		this.components[component.name] = component;
 		return this;
 	}
 
@@ -17,12 +18,12 @@ class Entity {
 			? (name = component.name)
 			: (name = component);
 
-		delete this.components[name];
+		delete this[name];
 		return this;
     }
     
     logEntity(){
-        console.log(JSON.stringify(this,null,4));
+        console.log(this);
         return this;
     }
 }

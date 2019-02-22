@@ -7,31 +7,31 @@ class PlayerMovementSys {
 	}
 
 	update(dt) {
-		this.player.components.Movement.prevDirection = this.player.components.Movement.direction;
-        this.player.components.Movement.prevIdle =this.player.components.Movement.idle;
-        this.player.components.Movement.prevAttacking =this.player.components.Movement.attacking;
+		this.player.Movement.prevDirection = this.player.Movement.direction;
+        this.player.Movement.prevIdle =this.player.Movement.idle;
+        this.player.Movement.prevAttacking =this.player.Movement.attacking;
 
-        this.player.components.Movement.idle = true;
+        this.player.Movement.idle = true;
 		if (this.keyboardKeys[65]) {
-			this.player.components.Position.x--;
-			this.player.components.Movement.idle = false;
-			this.player.components.Movement.direction = "left";
+			this.player.Position.x--;
+			this.player.Movement.idle = false;
+			this.player.Movement.direction = "left";
 		}
 		if (this.keyboardKeys[68]) {
-			this.player.components.Position.x++;
-			this.player.components.Movement.idle = false;
-			this.player.components.Movement.direction = "right";
+			this.player.Position.x++;
+			this.player.Movement.idle = false;
+			this.player.Movement.direction = "right";
 		}
 		if (this.keyboardKeys[87]) {
-			this.player.components.Position.y--;
-			this.player.components.Movement.idle = false;
+			this.player.Position.y--;
+			this.player.Movement.idle = false;
 		}
 		if (this.keyboardKeys[83]) {
-			this.player.components.Position.y++;
-			this.player.components.Movement.idle = false;
+			this.player.Position.y++;
+			this.player.Movement.idle = false;
         }
         if (this.keyboardKeys[69]){
-            this.player.components.Movement.attacking=true;
+            this.player.Movement.attacking=true;
         }
 
 	}

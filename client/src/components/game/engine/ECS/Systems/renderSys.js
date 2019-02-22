@@ -10,26 +10,26 @@ class RenderSys {
 
 	update() {
 		//get Cam position
-		let camX = this.camera.components.Position.x;
-		let camY = this.camera.components.Position.y;
+		let camX = this.camera.Position.x;
+		let camY = this.camera.Position.y;
 
 		//iterate over objs and update their PIXI DISPLAY x & y (NOT SAME AS Component.Position.x & y!!!)
 		for (let i in this.objArr) {
-			let objX = this.objArr[i].components.Position.x;
-			let objY = this.objArr[i].components.Position.y;
+			let objX = this.objArr[i].Position.x;
+			let objY = this.objArr[i].Position.y;
 
-			this.objArr[i].components.Sprite.idle.x = objX - camX + this.SCREEN_WIDTH / 2;
-			this.objArr[i].components.Sprite.idle.y = objY - camY + this.SCREEN_HEIGHT / 2;
+			this.objArr[i].Sprite.idle.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].Sprite.idle.y = objY - camY + this.SCREEN_HEIGHT / 2;
 
 
-			this.objArr[i].components.Sprite.moving.x = objX - camX + this.SCREEN_WIDTH / 2;
-			this.objArr[i].components.Sprite.moving.y = objY - camY + this.SCREEN_HEIGHT / 2;
+			this.objArr[i].Sprite.moving.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].Sprite.moving.y = objY - camY + this.SCREEN_HEIGHT / 2;
 	
-			this.objArr[i].components.Sprite.attacking.x = objX - camX + this.SCREEN_WIDTH / 2;
-			this.objArr[i].components.Sprite.attacking.y = objY - camY + this.SCREEN_HEIGHT / 2;
+			this.objArr[i].Sprite.attacking.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].Sprite.attacking.y = objY - camY + this.SCREEN_HEIGHT / 2;
 
-			this.objArr[i].components.Sprite.death.x = objX - camX + this.SCREEN_WIDTH / 2;
-			this.objArr[i].components.Sprite.death.y = objY - camY + this.SCREEN_HEIGHT / 2;
+			this.objArr[i].Sprite.death.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.objArr[i].Sprite.death.y = objY - camY + this.SCREEN_HEIGHT / 2;
 	
 	
 		}
