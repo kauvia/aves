@@ -3,15 +3,17 @@ class AISys {
 		this.objArr = objArr;
 		this.factionPos = {};
 	}
-	update(dt) {
+
+    update(dt) {
 		this.getFactionPositions();
 
 		for (let i in this.objArr) {
 			this.updateBehavior(i);
 		}
-	}
+    }
 
-	updateBehavior(i) {
+
+    updateBehavior(i) {
 		if (this.objArr[i].Faction.belongsTo === "enemy") {
 			if (
 				this.objArr[i].Position.x - this.objArr[i].Size.width / 2 >

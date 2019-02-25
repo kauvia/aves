@@ -21,7 +21,6 @@ class GameScreen extends Component {
 	}
 
 	guiListener = e => {
-			this.engine.testSpawner();
 
 	};
 

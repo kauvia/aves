@@ -26,10 +26,7 @@ class Engine {
 			}
 		);
 		this.stage = new PIXI.Container();
-		this.interaction = new PIXI.interaction.InteractionManager(this.renderer, {
-			root: this.stage,
-			view: this.renderer.view
-		});
+
 
 		this.oldTime = Date.now();
 		this.allLoaded = false;
@@ -42,9 +39,9 @@ class Engine {
 		this.camera = null;
 		this.player = null;
 
-		this.backgroundStage = new PIXI.Container;
-		this.unitStage = new PIXI.Container;
-		this.foregroundStage = new PIXI.Container;
+		this.backgroundStage = new PIXI.Container();
+		this.unitStage = new PIXI.Container();
+		this.foregroundStage = new PIXI.Container();
 
 		this.loader = new PIXI.loaders.Loader();
 		this.keyboardKeys = {};
@@ -59,13 +56,11 @@ class Engine {
 		this.loadMedia();
 	}
 
-	//   let frontTrees=new PIXI.CanvasRenderer
-	//       let frontTrees = new PIXI.tilemap.CompositeRectTileLayer(0,PIXI.utils.TextureCache['../assets/parallax-forest-front-trees.png']);
-	//    this.stage.addChild(frontTrees)
+
 	loadSystems() {
 		this.camera = new Entity();
 		this.camera.addComponent(new Components.Position(400, 300));
-		this.camera.addComponent(new Components.Velocity())
+		this.camera.addComponent(new Components.Velocity());
 
 		this.RenderSys = new RenderSys(
 			this.objArr,
@@ -215,11 +210,9 @@ class Engine {
 		);
 		this.objArr.push(this.player);
 
-		console.log(Object.keys(this.player.Sprite))
-	
+		console.log(Object.keys(this.player.Sprite));
 
-
-	//	let baba = new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames)
+		//	let baba = new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames)
 
 		this.test = new Entity();
 		this.test.addComponent(new Components.Position(300, 320));
@@ -238,50 +231,47 @@ class Engine {
 			)
 		);
 
-
-
 		this.objArr.push(this.test);
 
-		// this.fren = new Entity();
-		// this.fren.addComponent(new Components.Position(100, 300));
-		// this.fren.addComponent(new Components.Weapon());
-		// this.fren.addComponent(new Components.Size(32, 32));
-		// this.fren.addComponent(new Components.Movement());
-		// this.fren.addComponent(new Components.Faction("player"));
-		// this.fren.addComponent(
-		// 	new Components.Sprite(
-		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-		// 		new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
-		// 	)
-		// );
+		for (let i = 0; i < 10; i++) {
+			let fren = new Entity();
+			fren.addComponent(new Components.Position(Math.random()*500, 320));
+			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Size(32, 32));
+			fren.addComponent(new Components.Velocity(Math.random()*2+1));
 
+			fren.addComponent(new Components.Movement());
+			fren.addComponent(new Components.Faction("enemy"));
+			fren.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
+				)
+			);
+			this.objArr.push(fren);
 
+		}
 
-		// this.objArr.push(this.fren);
-
-
-		console.log(this.objArr)
+		console.log(this.objArr);
 
 		// add objs to stage
 		for (let i in this.objArr) {
 			this.objArr[i].Sprite.idle.animationSpeed = 0.2;
 			this.objArr[i].Sprite.idle.play();
-			this.unitStage.addChild(this.objArr[i].Sprite.idle)
+			this.unitStage.addChild(this.objArr[i].Sprite.idle);
 		}
 
-		this.stage.addChild(this.backgroundStage)
-		this.stage.addChild(this.unitStage)
-		this.stage.addChild(this.foregroundStage)
+		this.stage.addChild(this.backgroundStage);
+		this.stage.addChild(this.unitStage);
+		this.stage.addChild(this.foregroundStage);
 
 		this.loadSystems();
 		this.allLoaded = true;
 	};
-	testSpawner() {}
 	update(dt) {
 		//Trottle interation updates
-		this.interaction.update(dt);
 		this.KeyboardListenerSys.inputListener();
 		// Update game stuff here
 		this.AISys.update(dt);
@@ -290,9 +280,9 @@ class Engine {
 
 		this.PlayerMovementSys.update(dt);
 		this.NpcMovementSys.update(dt);
+		this.CameraFollowSys.update();
 
 		this.SpriteUpdateSys.update();
-		this.CameraFollowSys.update();
 
 		this.RenderSys.update();
 

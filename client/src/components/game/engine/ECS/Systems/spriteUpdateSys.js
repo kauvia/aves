@@ -65,7 +65,6 @@ class SpriteUpdateSys {
 							this.stage.addChild(this.objArr[i].Sprite.idle);
 						} else if (!this.objArr[i].Movement.idle) {
 							this.stage.removeChild(this.objArr[i].Sprite.idle);
-
 							this.objArr[i].Sprite.moving.animationSpeed = 0.2;
 							this.objArr[i].Sprite.moving.play();
 							this.stage.addChild(this.objArr[i].Sprite.moving);
