@@ -65,4 +65,14 @@ class Velocity{
     }
 }
 
-export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity };
+class Behaviour{
+	constructor(spawnPoint,activationRange=1000,attackRange=100,ticks=0){
+		this.name = "Behaviour";
+		this.activationRange = activationRange;
+		this.attackRange = attackRange;
+		this.ticks = ticks;
+		this.spawnPoint = spawnPoint;
+	}
+}
+
+export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour };

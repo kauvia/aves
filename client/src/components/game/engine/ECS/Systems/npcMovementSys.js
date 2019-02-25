@@ -1,23 +1,29 @@
 //Move npcs
 class NpcMovementSys {
-	constructor(objArr) {
-		this.objArr = objArr;
+	constructor(playerUnitArr,npcUnitArr) {
+		this.playerUnitArr = playerUnitArr;
+		this.npcUnitArr=npcUnitArr;
 	}
 
 	update(dt) {
-		for (let i in this.objArr) {
-			if (this.objArr[i].Faction.belongsTo != "player") {
-				this.moveEntity(dt, i);
+		for (let i in this.playerUnitArr) {
+			if (this.playerUnitArr[i].Faction.belongsTo != "player") {
+				this.moveEntity(dt,this.playerUnitArr, i);
+			}
+		}
+		for (let i in this.npcUnitArr) {
+			if (this.npcUnitArr[i].Faction.belongsTo != "player") {
+				this.moveEntity(dt,this.npcUnitArr, i);
 			}
 		}
 	}
 
-	moveEntity(dt, i) {
+	moveEntity(dt,objArr ,i) {
 
-		if (!this.objArr[i].Movement.idle && !this.objArr[i].Movement.attacking) {
-			this.objArr[i].Movement.direction == "left"
-				? (this.objArr[i].Position.x -= this.objArr[i].Velocity.x)
-				: (this.objArr[i].Position.x += this.objArr[i].Velocity.x);
+		if (!objArr[i].Movement.idle && !objArr[i].Movement.attacking) {
+			objArr[i].Movement.direction == "left"
+				? (objArr[i].Position.x -= objArr[i].Velocity.x)
+				: (objArr[i].Position.x += objArr[i].Velocity.x);
 		}
 
 

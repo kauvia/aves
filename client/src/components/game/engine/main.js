@@ -27,11 +27,11 @@ class Engine {
 		);
 		this.stage = new PIXI.Container();
 
-
 		this.oldTime = Date.now();
 		this.allLoaded = false;
 		//entity arrs
-		this.objArr = [];
+		this.playerUnitArr = [];
+		this.npcUnitArr = [];
 		this.backgroundArr = [];
 
 		this.spritesObj = {};
@@ -56,14 +56,14 @@ class Engine {
 		this.loadMedia();
 	}
 
-
 	loadSystems() {
 		this.camera = new Entity();
 		this.camera.addComponent(new Components.Position(400, 300));
 		this.camera.addComponent(new Components.Velocity());
 
 		this.RenderSys = new RenderSys(
-			this.objArr,
+			this.playerUnitArr,
+			this.npcUnitArr,
 			this.backgroundArr,
 			this.camera,
 			this.SCREEN_WIDTH,
@@ -80,13 +80,14 @@ class Engine {
 		this.CameraFollowSys = new CameraFollowSys(this.player, this.camera);
 
 		this.SpriteUpdateSys = new SpriteUpdateSys(
-			this.objArr,
+			this.playerUnitArr,
+			this.npcUnitArr,
 			this.backgroundArr,
 			this.unitStage
 		);
 
-		this.NpcMovementSys = new NpcMovementSys(this.objArr);
-		this.AISys = new AISys(this.objArr);
+		this.NpcMovementSys = new NpcMovementSys(this.playerUnitArr,this.npcUnitArr);
+		this.AISys = new AISys(this.playerUnitArr,this.npcUnitArr);
 	}
 	loadMedia() {
 		console.log("loading media");
@@ -105,7 +106,7 @@ class Engine {
 		);
 		this.tilingBackTreesSprite = new PIXI.extras.TilingSprite(
 			backTreesTexture,
-			800,
+			1200,
 			160
 		);
 		//	this.tilingBackTreesSprite.scale.set(1.5, 1.5);
@@ -116,7 +117,7 @@ class Engine {
 		);
 		this.tilingLightSprite = new PIXI.extras.TilingSprite(
 			lightingTexture,
-			800,
+			1200,
 			160
 		);
 		//	this.tilingLightSprite.scale.set(1.5, 1.5);
@@ -127,7 +128,7 @@ class Engine {
 		);
 		this.tilingMidTreesSprite = new PIXI.extras.TilingSprite(
 			midTreesTexture,
-			800,
+			1200,
 			160
 		);
 		//	this.tilingMidTreesSprite.scale.set(1.5, 1.5);
@@ -138,7 +139,7 @@ class Engine {
 		);
 		this.tilingFrontTreesSprite = new PIXI.extras.TilingSprite(
 			frontTreesTexture,
-			800,
+			1200,
 			160
 		);
 		//	this.tilingFrontTreesSprite.scale.set(1.5, 1.5);
@@ -208,40 +209,23 @@ class Engine {
 				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
 			)
 		);
-		this.objArr.push(this.player);
+		this.playerUnitArr.push(this.player);
 
-		console.log(Object.keys(this.player.Sprite));
 
-		//	let baba = new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames)
-
-		this.test = new Entity();
-		this.test.addComponent(new Components.Position(300, 320));
-		this.test.addComponent(new Components.Weapon());
-		this.test.addComponent(new Components.Size(32, 32));
-		this.test.addComponent(new Components.Velocity());
-
-		this.test.addComponent(new Components.Movement());
-		this.test.addComponent(new Components.Faction("enemy"));
-		this.test.addComponent(
-			new Components.Sprite(
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
-			)
-		);
-
-		this.objArr.push(this.test);
-
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 1; i++) {
 			let fren = new Entity();
-			fren.addComponent(new Components.Position(Math.random()*500, 320));
+			let spawnPos = Math.random() * 500;
+			 spawnPos = 400
+
+			fren.addComponent(new Components.Position(spawnPos, 320));
 			fren.addComponent(new Components.Weapon());
 			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random()*2+1));
+			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+
+			fren.addComponent(new Components.Behaviour(spawnPos));
 
 			fren.addComponent(new Components.Movement());
-			fren.addComponent(new Components.Faction("enemy"));
+			fren.addComponent(new Components.Faction("humanUnit"));
 			fren.addComponent(
 				new Components.Sprite(
 					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
@@ -250,19 +234,21 @@ class Engine {
 					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
 				)
 			);
-			this.objArr.push(fren);
-
+			this.npcUnitArr.push(fren);
 		}
 
-		console.log(this.objArr);
 
 		// add objs to stage
-		for (let i in this.objArr) {
-			this.objArr[i].Sprite.idle.animationSpeed = 0.2;
-			this.objArr[i].Sprite.idle.play();
-			this.unitStage.addChild(this.objArr[i].Sprite.idle);
+		for (let i in this.playerUnitArr) {
+			this.playerUnitArr[i].Sprite.idle.animationSpeed = 0.2;
+			this.playerUnitArr[i].Sprite.idle.play();
+			this.unitStage.addChild(this.playerUnitArr[i].Sprite.idle);
 		}
-
+		for (let i in this.npcUnitArr) {
+			this.npcUnitArr[i].Sprite.idle.animationSpeed = 0.2;
+			this.npcUnitArr[i].Sprite.idle.play();
+			this.unitStage.addChild(this.npcUnitArr[i].Sprite.idle);
+		}
 		this.stage.addChild(this.backgroundStage);
 		this.stage.addChild(this.unitStage);
 		this.stage.addChild(this.foregroundStage);

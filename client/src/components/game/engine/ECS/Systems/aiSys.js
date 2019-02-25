@@ -1,61 +1,84 @@
 class AISys {
-	constructor(objArr) {
-		this.objArr = objArr;
+	constructor(playerUnitArr, npcUnitArr) {
+		this.playerUnitArr = playerUnitArr;
+		this.npcUnitArr = npcUnitArr;
 		this.factionPos = {};
 	}
 
-    update(dt) {
-		this.getFactionPositions();
-
-		for (let i in this.objArr) {
-			this.updateBehavior(i);
+	update(dt) {
+		for (let i in this.npcUnitArr) {
+			this.updateNpcUnit(dt, i);
 		}
-    }
+	}
 
-
-    updateBehavior(i) {
-		if (this.objArr[i].Faction.belongsTo === "enemy") {
-			if (
-				this.objArr[i].Position.x - this.objArr[i].Size.width / 2 >
-					this.factionPos.player.rightBound &&
-				!this.objArr[i].Movement.attacking
-			) {
-				this.objArr[i].Movement.idle = false;
-				this.objArr[i].Movement.direction = "left";
-			} else if (
-				this.objArr[i].Position.x + this.objArr[i].Size.width / 2 <
-					this.factionPos.player.leftBound &&
-				!this.objArr[i].Movement.attacking
-			) {
-				this.objArr[i].Movement.idle = false;
-				this.objArr[i].Movement.direction = "right";
-			} else {
-				this.objArr[i].Movement.attacking = true;
+	updateNpcUnit(dt, i) {
+		// Activate unit
+		let distance = 100000;
+		let target = null;
+		for (let j in this.playerUnitArr) {
+			let temp = Math.abs(
+				this.playerUnitArr[j].Position.x - this.npcUnitArr[i].Position.x
+			);
+			if (temp < distance) {
+				distance = temp;
+				target = j;
 			}
 		}
+		distance < this.npcUnitArr[i].Behaviour.attackRange
+			? this.unitAttack(dt, i, target)
+			: distance < this.npcUnitArr[i].Behaviour.activationRange
+			? this.unitActivate(dt, i)
+			: this.unitDeactivate(dt, i);
 	}
+	unitAttack(dt, i, j) {
+		let unit = this.npcUnitArr[i];
+		let target = this.playerUnitArr[j];
+		let distanceFromTarget = unit.Position.x - target.Position.x;
+		let targetDirection;
+		distanceFromTarget <= 0
+			? (targetDirection = "right")
+			: (targetDirection = "left");
 
-	getFactionPositions() {
-		this.factionPos = {};
-		for (let i in this.objArr) {
-			let posX = this.objArr[i].Position.x;
-			if (!this.factionPos[this.objArr[i].Faction.belongsTo]) {
-				this.factionPos[this.objArr[i].Faction.belongsTo] = {
-					leftBound: posX,
-					rightBound: posX
-				};
+
+
+
+
+		}
+	unitActivate(dt, i) {
+		let unit = this.npcUnitArr[i];
+		unit.Behaviour.ticks += dt;
+		let distanceFromSpawn = unit.Position.x - unit.Behaviour.spawnPoint;
+
+		if (Math.abs(distanceFromSpawn) > 300) {
+			if (distanceFromSpawn < 0) {
+				unit.Movement.idle = false;
+				unit.Movement.direction = "right";
 			} else {
-				if (
-					this.factionPos[this.objArr[i].Faction.belongsTo].leftBound > posX
-				) {
-					this.factionPos[this.objArr[i].Faction.belongsTo].leftBound = posX;
-				} else if (
-					this.factionPos[this.objArr[i].Faction.belongsTo].rightBound < posX
-				) {
-					this.factionPos[this.objArr[i].Faction.belongsTo].rightBound = posX;
+				unit.Movement.idle = false;
+				unit.Movement.direction = "left";
+			}
+		} else {
+			if (unit.Behaviour.ticks > 50) {
+				let rand = Math.random();
+
+				if (rand < 0.1) {
+					unit.Movement.idle = false;
+					unit.Movement.direction = "left";
+					unit.Behaviour.ticks = 0;
+				} else if (rand < 0.2) {
+					unit.Movement.idle = false;
+					unit.Movement.direction = "right";
+					unit.Behaviour.ticks = 0;
+				} else {
+					unit.Movement.idle = true;
+					unit.Behaviour.ticks = 0;
 				}
 			}
 		}
+	}
+	unitDeactivate(dt, i) {
+		let unit = this.npcUnitArr[i];
+		unit.Movement.idle = true;
 	}
 }
 

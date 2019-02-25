@@ -28,7 +28,7 @@
   "window": {
     "fullscreen": false,
     "height": 600,
-    "width": 800
+    "width": 1200
   },
   "nwBuilder": {
     "//": "https://github.com/nwjs-community/nw-builder",
