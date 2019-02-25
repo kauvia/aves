@@ -251,7 +251,7 @@ class Engine {
 		}
 		this.stage.addChild(this.backgroundStage);
 		this.stage.addChild(this.unitStage);
-		this.stage.addChild(this.foregroundStage);
+	//	this.stage.addChild(this.foregroundStage);
 
 		this.loadSystems();
 		this.allLoaded = true;
@@ -280,6 +280,7 @@ class Engine {
 	render() {
 		//render stuff here
 		this.renderer.render(this.stage);
+		console.log(this.stage.children)
 	}
 
 	guiUpdater() {}

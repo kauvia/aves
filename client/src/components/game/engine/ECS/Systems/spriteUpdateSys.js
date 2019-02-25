@@ -29,7 +29,7 @@ class SpriteUpdateSys {
 					) {
 						objArr[i].Movement.attacking = false;
 						this.stage.removeChild(objArr[i].Sprite.attacking);
-						this.stage.addChild(objArr[i].Sprite.idle);
+						this.stage.addChild(objArr[i].Sprite.moving);
 					}
 				}
 			} else {

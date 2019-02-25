@@ -39,11 +39,18 @@ class AISys {
 			? (targetDirection = "right")
 			: (targetDirection = "left");
 
-
-
-
-
+		if (
+			Math.abs(distanceFromTarget) >
+			unit.Size.width / 2 + unit.Weapon.range && !unit.Movement.attacking
+		) {
+			unit.Movement.idle = false;
+			unit.Movement.direction=targetDirection
+			console.log("movetotarget");
+		} else {	
+			unit.Movement.attacking = true;
+			console.log("attack");
 		}
+	}
 	unitActivate(dt, i) {
 		let unit = this.npcUnitArr[i];
 		unit.Behaviour.ticks += dt;
