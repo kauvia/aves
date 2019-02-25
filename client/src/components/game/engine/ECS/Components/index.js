@@ -47,6 +47,7 @@ class Weapon {
 		this.type = type;
 		this.range = range;
 		this.damage = damage;
+		this.tick = 0;
 	}
 }
 
@@ -66,13 +67,21 @@ class Velocity{
 }
 
 class Behaviour{
-	constructor(spawnPoint,activationRange=1000,attackRange=100,ticks=0){
+	constructor(spawnPoint,activationRange=1000,attackRange=300,followRange=500){
 		this.name = "Behaviour";
 		this.activationRange = activationRange;
 		this.attackRange = attackRange;
-		this.ticks = ticks;
+		this.followRange = followRange;
+		this.ticks = 0;
 		this.spawnPoint = spawnPoint;
 	}
 }
 
-export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour };
+class Stats{
+	constructor(health=100){
+		this.name="Stats";
+		this.health=health;
+	}
+}
+
+export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour,Stats };

@@ -19,36 +19,47 @@ class AISys {
 			let temp = Math.abs(
 				this.playerUnitArr[j].Position.x - this.npcUnitArr[i].Position.x
 			);
-			if (temp < distance) {
+			if (temp < distance && this.playerUnitArr[j].Stats.health > 0) {
 				distance = temp;
 				target = j;
 			}
 		}
-		distance < this.npcUnitArr[i].Behaviour.attackRange
-			? this.unitAttack(dt, i, target)
-			: distance < this.npcUnitArr[i].Behaviour.activationRange
-			? this.unitActivate(dt, i)
-			: this.unitDeactivate(dt, i);
+		if (target) {
+			distance < this.npcUnitArr[i].Behaviour.attackRange
+				? this.unitAttack(dt, i, target)
+				: distance < this.npcUnitArr[i].Behaviour.activationRange
+				? this.unitActivate(dt, i)
+				: this.unitDeactivate(dt, i);
+		} else {
+			this.unitDeactivate(dt, i);
+		}
 	}
 	unitAttack(dt, i, j) {
 		let unit = this.npcUnitArr[i];
 		let target = this.playerUnitArr[j];
 		let distanceFromTarget = unit.Position.x - target.Position.x;
+		let distanceFromSpawn = unit.Position.x - unit.Behaviour.spawnPoint;
 		let targetDirection;
 		distanceFromTarget <= 0
 			? (targetDirection = "right")
 			: (targetDirection = "left");
 
 		if (
-			Math.abs(distanceFromTarget) >
-			unit.Size.width / 2 + unit.Weapon.range && !unit.Movement.attacking
+			Math.abs(distanceFromTarget) > unit.Size.width / 2 + unit.Weapon.range &&
+			!unit.Movement.attacking
 		) {
 			unit.Movement.idle = false;
-			unit.Movement.direction=targetDirection
-			console.log("movetotarget");
-		} else {	
+			unit.Movement.direction = targetDirection;
+			//			console.log("movetotarget");
+		} else {
+	//		unit.Weapon.tick++;
+//			console.log(unit.Weapon.tick)
 			unit.Movement.attacking = true;
-			console.log("attack");
+			if (!unit.Movement.prevAttacking) {
+				target.Stats.health -= unit.Weapon.damage;
+	//			console.log(target.Stats.health)
+			}
+
 		}
 	}
 	unitActivate(dt, i) {
@@ -56,7 +67,7 @@ class AISys {
 		unit.Behaviour.ticks += dt;
 		let distanceFromSpawn = unit.Position.x - unit.Behaviour.spawnPoint;
 
-		if (Math.abs(distanceFromSpawn) > 300) {
+		if (Math.abs(distanceFromSpawn) > unit.Behaviour.followRange) {
 			if (distanceFromSpawn < 0) {
 				unit.Movement.idle = false;
 				unit.Movement.direction = "right";
