@@ -100,16 +100,19 @@ class Engine {
 
 		this.loader
 			.add("../assets/caveman-walking.json")
+			.add("../assets/skeleton.json")
+
 			.add("forest-back-trees", "../assets/parallax-forest-back-trees.png")
 			.add("forest-lights", "../assets/parallax-forest-lights.png")
 			.add("forest-middle-trees", "../assets/parallax-forest-middle-trees.png")
 			.add("forest-front-trees", "../assets/parallax-forest-front-trees.png")
 		
-			.add("mountain-0", "../assets/parallax-mountain-bg.png")
-			.add("mountain-1", "../assets/parallax-mountain-mountain-far.png")
-			.add("mountain-2", "../assets/parallax-mountain-mountains.png")
-			.add("mountain-3", "../assets/parallax-mountain-mountain-trees.png")
-			.add("mountain-4", "../assets/parallax-mountain-foreground-trees.png")
+			.add("mountain-1", "../assets/Hills-Layer-01.png")
+			.add("mountain-2", "../assets/Hills-Layer-02.png")
+			.add("mountain-3", "../assets/Hills-Layer-03.png")
+			.add("mountain-4", "../assets/Hills-Layer-04.png")
+			.add("mountain-5", "../assets/Hills-Layer-05.png")
+			.add("mountain-6", "../assets/Hills-Layer-06.png")
 
 			.load(this.onAssetLoaded);
 
@@ -206,11 +209,41 @@ class Engine {
 			);
 		}
 
+		this.spritesObj.skeletonWalkFrames = [];
+		for (let i = 1; i <= 13; i++) {
+			this.spritesObj.skeletonWalkFrames.push(
+				PIXI.Texture.fromFrame("skeleton-walk-" + i + ".png")
+			);
+		}
+
+		this.spritesObj.skeletonIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.skeletonIdleFrames.push(
+				PIXI.Texture.fromFrame("skeleton-idle-" + i + ".png")
+			);
+		}
+
+		this.spritesObj.skeletonAttackFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.skeletonAttackFrames.push(
+				PIXI.Texture.fromFrame("skeleton-attack-" + i + ".png")
+			);
+		}
+
+		this.spritesObj.skeletonDeathFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.skeletonDeathFrames.push(
+				PIXI.Texture.fromFrame("skeleton-dead-" + i + ".png")
+			);
+		}
+
+
+
 			//MOUNTAINS
-		for (let i = 0;i<5;i++){
+		for (let i = 1;i<=6;i++){
 			let texture = PIXI.Texture.fromFrame("mountain-"+i);
-			let tilingSprite = new PIXI.extras.TilingSprite(texture,1200,160);
-			tilingSprite.y=200;
+			let tilingSprite = new PIXI.extras.TilingSprite(texture,1200,256);
+			tilingSprite.y=104;
 			this.mountainStage.addChild(tilingSprite)
 			this.backgroundArr.mountain.push(tilingSprite)
 		}
@@ -227,6 +260,7 @@ console.log(this.mountainStage)
 
 		this.player.addComponent(new Components.Stats());
 
+		this.player.addComponent(new Components.Commands())
 		this.player.addComponent(new Components.Movement());
 		this.player.addComponent(new Components.Faction("player"));
 		this.player.addComponent(
@@ -263,6 +297,30 @@ console.log(this.mountainStage)
 				)
 			);
 			this.npcUnitArr.push(fren);
+		}
+		for (let i = 0; i < 1; i++) {
+			let skelly = new Entity();
+			let spawnPos = Math.random() * 500;
+
+			skelly.addComponent(new Components.Position(spawnPos, 320));
+			skelly.addComponent(new Components.Weapon("pikeaxe","melee",20,25));
+			skelly.addComponent(new Components.Size(32, 32));
+			skelly.addComponent(new Components.Velocity(Math.random() * 1 + 1));
+
+			skelly.addComponent(new Components.Stats());
+			skelly.addComponent(new Components.Behaviour(spawnPos));
+
+			skelly.addComponent(new Components.Movement());
+			skelly.addComponent(new Components.Faction("humanUnit"));
+			skelly.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonDeathFrames)
+				)
+			);
+			this.npcUnitArr.push(skelly);
 		}
 
 		for (let i = 0; i < 1; i++) {
@@ -309,7 +367,7 @@ console.log(this.mountainStage)
 		this.stage.addChild(this.backgroundStage);
 		this.stage.addChild(this.unitStage);
 		console.log(this.stage);
-		//	this.stage.addChild(this.foregroundStage);
+			this.stage.addChild(this.foregroundStage);
 
 		this.loadSystems();
 		this.allLoaded = true;

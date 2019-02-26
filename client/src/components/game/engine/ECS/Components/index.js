@@ -84,4 +84,11 @@ class Stats{
 	}
 }
 
-export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour,Stats };
+class Commands{
+	constructor(mode="follow"){
+		this.name="Commands";
+		this.mode=mode;
+	}
+}
+
+export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour,Stats,Commands };
