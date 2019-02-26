@@ -62,7 +62,6 @@ class RenderSys {
 			this.backgroundArr.forest[i].tilePosition.x = -camX * step;
 		}
 		for (let i in this.backgroundArr.mountain) {
-			console.log(camX)
 
 			if (camX<1200){
 				this.backgroundArr.mountain[i].x=1200

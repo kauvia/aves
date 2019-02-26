@@ -8,8 +8,8 @@ class PlayerMovementSys {
 
 	update(dt) {
 		this.player.Movement.idle = true;
-
 		if (this.keyboardKeys[65]) {
+			//A
 			if (!this.player.Movement.attacking) {
 				this.player.Position.x -= this.player.Velocity.x;
 				this.player.Movement.idle = false;
@@ -17,6 +17,7 @@ class PlayerMovementSys {
 			}
 		}
 		if (this.keyboardKeys[68]) {
+			//D
 			if (!this.player.Movement.attacking) {
 				this.player.Position.x += this.player.Velocity.x;
 				this.player.Movement.idle = false;
@@ -24,15 +25,22 @@ class PlayerMovementSys {
 			}
 		}
 		if (this.keyboardKeys[87]) {
-			this.player.Position.y--;
-			this.player.Movement.idle = true;
+			//W
+			this.player.Commands.mode = "defend";
+
 		}
 		if (this.keyboardKeys[83]) {
-			this.player.Position.y++;
-			this.player.Movement.idle = true;
+			//S
+			this.player.Commands.mode = "hold";
+			this.player.Commands.holdPoint = this.player.Position.x
+		}
+		if (this.keyboardKeys[81]) {
+			//Q
+			this.player.Commands.mode = "follow";
 		}
 		if (this.keyboardKeys[69]) {
-			this.player.Movement.attacking = true;
+			//E
+			this.player.Commands.mode = "attack";
 		}
 	}
 }

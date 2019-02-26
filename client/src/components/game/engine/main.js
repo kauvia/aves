@@ -93,7 +93,7 @@ class Engine {
 			this.playerUnitArr,
 			this.npcUnitArr
 		);
-		this.AISys = new AISys(this.playerUnitArr, this.npcUnitArr);
+		this.AISys = new AISys(this.playerUnitArr, this.npcUnitArr,this.player);
 	}
 	loadMedia() {
 		console.log("loading media");
@@ -296,11 +296,12 @@ console.log(this.mountainStage)
 					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
 				)
 			);
-			this.npcUnitArr.push(fren);
+	//		this.npcUnitArr.push(fren);
 		}
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 2; i++) {
 			let skelly = new Entity();
 			let spawnPos = Math.random() * 500;
+			spawnPos=600;
 
 			skelly.addComponent(new Components.Position(spawnPos, 320));
 			skelly.addComponent(new Components.Weapon("pikeaxe","melee",20,25));
@@ -323,7 +324,7 @@ console.log(this.mountainStage)
 			this.npcUnitArr.push(skelly);
 		}
 
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 2; i++) {
 			let fren = new Entity();
 			let spawnPos = Math.random() * 200;
 
@@ -333,7 +334,7 @@ console.log(this.mountainStage)
 			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
 
 			fren.addComponent(new Components.Stats());
-			fren.addComponent(new Components.Behaviour(spawnPos));
+			fren.addComponent(new Components.Behaviour(spawnPos,1000,300,20+Math.random()*100));
 
 			fren.addComponent(new Components.Movement());
 			fren.addComponent(new Components.Faction("playerUnit"));
@@ -390,7 +391,7 @@ console.log(this.mountainStage)
 		this.RenderSys.update();
 
 		if (Math.random() > 0.9) {
-			this.guiUpdater((1 / dt) * 60);
+			this.guiUpdater({fps:(1 / dt) * 60,command:this.player.Commands.mode});
 		}
 	}
 

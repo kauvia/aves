@@ -1,5 +1,6 @@
 class AISys {
-	constructor(playerUnitArr, npcUnitArr) {
+	constructor(playerUnitArr, npcUnitArr, player) {
+		this.player = player;
 		this.playerUnitArr = playerUnitArr;
 		this.npcUnitArr = npcUnitArr;
 		this.factionPos = {};
@@ -9,8 +10,133 @@ class AISys {
 		for (let i in this.npcUnitArr) {
 			this.updateNpcUnit(dt, i);
 		}
+		for (let i in this.playerUnitArr) {
+			if (this.playerUnitArr[i].Faction.belongsTo == "playerUnit") {
+				this.updatePlayerUnit(dt, i);
+			}
+		}
+	}
+	updatePlayerUnit(dt, i) {
+		if (this.player.Commands.mode === "follow") {
+			this.followPlayer(dt, i);
+		} else if (this.player.Commands.mode === "attack") {
+			this.attackEnemies(dt, i);
+		} else if (this.player.Commands.mode === "defend") {
+			this.defendPlayer(dt, i);
+		} else if (this.player.Commands.mode === "hold") {
+			this.holdPosition(dt, i);
+		}
+	}
+	followPlayer(dt, i) {
+		let unit = this.playerUnitArr[i];
+		//		console.log(unit.Behaviour.followRange)
+
+		let distance = unit.Position.x - this.player.Position.x;
+		let direction;
+		distance <= 0 ? (direction = "right") : (direction = "left");
+		if (Math.abs(distance) > unit.Behaviour.followRange) {
+			unit.Movement.idle = false;
+			unit.Movement.direction = direction;
+		} else {
+			unit.Movement.idle = true;
+		}
+	}
+	attackEnemies(dt, i) {
+		let unit = this.playerUnitArr[i];
+
+		let distance = 100000;
+		let target = null;
+		for (let j in this.npcUnitArr) {
+			let temp = Math.abs(
+				this.npcUnitArr[j].Position.x - unit.Position.x
+			);
+			if (temp < distance && this.npcUnitArr[j].Stats.health > 0) {
+				distance = temp;
+				target = this.npcUnitArr[j];
+			}
+		}
+		if(target){
+
+			let distanceFromTarget = unit.Position.x - target.Position.x;
+			let targetDirection;
+			distanceFromTarget <= 0
+				? (targetDirection = "right")
+				: (targetDirection = "left");
+	
+			if (
+				Math.abs(distanceFromTarget) > unit.Size.width / 2 + unit.Weapon.range &&
+				!unit.Movement.attacking
+			) {
+				unit.Movement.idle = false;
+				unit.Movement.direction = targetDirection;
+				//			console.log("movetotarget");
+			} else {
+				//		unit.Weapon.tick++;
+				//			console.log(unit.Weapon.tick)
+				unit.Movement.attacking = true;
+				if (!unit.Movement.prevAttacking) {
+					target.Stats.health -= unit.Weapon.damage;
+					//			console.log(target.Stats.health)
+				}
+			}
+		} else {this.followPlayer(dt,i)}
+	}
+	defendPlayer(dt, i) {
+		let unit = this.playerUnitArr[i];
+
+		let distance = 100000;
+		let target = null;
+		for (let j in this.npcUnitArr) {
+			let temp = Math.abs(
+				this.npcUnitArr[j].Position.x - unit.Position.x
+			);
+			if (temp < distance && this.npcUnitArr[j].Stats.health > 0) {
+				distance = temp;
+				target = this.npcUnitArr[j];
+			}
+		}
+		if(target && distance<unit.Behaviour.attackRange){
+
+			let distanceFromTarget = unit.Position.x - target.Position.x;
+			let targetDirection;
+			distanceFromTarget <= 0
+				? (targetDirection = "right")
+				: (targetDirection = "left");
+	
+			if (
+				Math.abs(distanceFromTarget) > unit.Size.width / 2 + unit.Weapon.range &&
+				!unit.Movement.attacking
+			) {
+				unit.Movement.idle = false;
+				unit.Movement.direction = targetDirection;
+				//			console.log("movetotarget");
+			} else {
+				//		unit.Weapon.tick++;
+				//			console.log(unit.Weapon.tick)
+				unit.Movement.attacking = true;
+				if (!unit.Movement.prevAttacking) {
+					target.Stats.health -= unit.Weapon.damage;
+					//			console.log(target.Stats.health)
+				}
+			}
+		} else {this.followPlayer(dt,i)}
+	}
+	holdPosition(dt, i) {
+		let unit = this.playerUnitArr[i];
+
+		let distance = unit.Position.x - this.player.Commands.holdPoint;
+		let direction;
+		distance <= 0 ? (direction = "right") : (direction = "left");
+		if (Math.abs(distance) > unit.Behaviour.followRange) {
+			unit.Movement.idle = false;
+			unit.Movement.direction = direction;
+		} else {
+			unit.Movement.idle = true;
+			
+		}
 	}
 
+	// FOR NPC UNITS(NON PLAYER FACTION)
 	updateNpcUnit(dt, i) {
 		// Activate unit
 		let distance = 100000;
@@ -52,14 +178,13 @@ class AISys {
 			unit.Movement.direction = targetDirection;
 			//			console.log("movetotarget");
 		} else {
-	//		unit.Weapon.tick++;
-//			console.log(unit.Weapon.tick)
+			//		unit.Weapon.tick++;
+			//			console.log(unit.Weapon.tick)
 			unit.Movement.attacking = true;
 			if (!unit.Movement.prevAttacking) {
 				target.Stats.health -= unit.Weapon.damage;
-	//			console.log(target.Stats.health)
+				//			console.log(target.Stats.health)
 			}
-
 		}
 	}
 	unitActivate(dt, i) {

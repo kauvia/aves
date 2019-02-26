@@ -21,12 +21,14 @@ class GameGui extends Component {
 					}}
 				>
 					<button onClick={this.handleChunks}>Spawn chunks</button>
-					<div>FPS : {this.props.tester}</div>
+					<div>FPS : {this.props.tester.fps}</div>
+					<div>Order : {this.props.tester.command}</div>
+
 				</div>
 				<div
 					style={{
 						position: "absolute",
-						top:"50px",
+						top:"100px",
 						width: "100px",
 						height: "450px",
 						backgroundColor: "rgba(32,232,212,0.5)"

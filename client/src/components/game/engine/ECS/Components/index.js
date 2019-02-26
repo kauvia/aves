@@ -88,7 +88,8 @@ class Commands{
 	constructor(mode="follow"){
 		this.name="Commands";
 		this.mode=mode;
+		this.holdPoint=100;
 	}
-}
+} 
 
 export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour,Stats,Commands };
