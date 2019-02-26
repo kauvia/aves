@@ -11,8 +11,10 @@ class AISys {
 			this.updateNpcUnit(dt, i);
 		}
 		for (let i in this.playerUnitArr) {
-			if (this.playerUnitArr[i].Faction.belongsTo == "playerUnit") {
+			if (this.playerUnitArr[i].Faction.belongsTo == "playerUnit" && this.playerUnitArr[i].Stats.health>0) {
 				this.updatePlayerUnit(dt, i);
+			} else if (this.playerUnitArr[i].Faction.belongsTo == "playerUnit" && this.playerUnitArr[i].Stats.health<=0){
+				this.playerUnitArr[i].Movement.idle=true;
 			}
 		}
 	}

@@ -3,6 +3,7 @@ class RenderSys {
 	constructor(
 		playerArr,
 		npcArr,
+		buildingArr,
 		backgroundArr,
 		camera,
 		SCREEN_WIDTH,
@@ -10,6 +11,7 @@ class RenderSys {
 	) {
 		this.playerArr = playerArr;
 		this.npcArr = npcArr;
+		this.buildingArr = buildingArr;
 		this.backgroundArr = backgroundArr;
 		this.camera = camera;
 		this.SCREEN_WIDTH = SCREEN_WIDTH;
@@ -56,24 +58,41 @@ class RenderSys {
 			this.npcArr[i].Sprite.death.x = objX - camX + this.SCREEN_WIDTH / 2;
 			this.npcArr[i].Sprite.death.y = objY - camY + this.SCREEN_HEIGHT / 2;
 		}
+		for (let i in this.buildingArr) {
+			let objX = this.buildingArr[i].Position.x;
+			let objY = this.buildingArr[i].Position.y;
+
+			this.buildingArr[i].Sprite.idle.x = objX - camX + this.SCREEN_WIDTH / 2;
+			this.buildingArr[i].Sprite.idle.y = objY - camY + this.SCREEN_HEIGHT / 2;
+
+		//	this.buildingArr[i].Sprite.moving.x = objX - camX + this.SCREEN_WIDTH / 2;
+		//	this.buildingArr[i].Sprite.moving.y = objY - camY + this.SCREEN_HEIGHT / 2;
+
+	//		this.buildingArr[i].Sprite.attacking.x = objX - camX + this.SCREEN_WIDTH / 2;
+	//		this.buildingArr[i].Sprite.attacking.y = objY - camY + this.SCREEN_HEIGHT / 2;
+
+	//		this.buildingArr[i].Sprite.death.x = objX - camX + this.SCREEN_WIDTH / 2;
+	//		this.buildingArr[i].Sprite.death.y = objY - camY + this.SCREEN_HEIGHT / 2;
+		}
+
 
 		for (let i in this.backgroundArr.forest) {
 			let step = (parseInt(i) + 2) / this.backgroundArr.forest.length;
 			this.backgroundArr.forest[i].tilePosition.x = -camX * step;
 		}
-		for (let i in this.backgroundArr.mountain) {
+		// for (let i in this.backgroundArr.mountain) {
 
-			if (camX<1200){
-				this.backgroundArr.mountain[i].x=1200
-			} else if (camX<2400){
-				this.backgroundArr.mountain[i].x=2400-camX
-				console.log(camX)
-			} else{
-				this.backgroundArr.mountain[i].x=0
-			}
-			let step = (parseInt(i) + 2) / this.backgroundArr.mountain.length;
-			this.backgroundArr.mountain[i].tilePosition.x = -camX * step;
-		}
+		// 	if (camX<1200){
+		// 		this.backgroundArr.mountain[i].x=1200
+		// 	} else if (camX<2400){
+		// 		this.backgroundArr.mountain[i].x=2400-camX
+		// 		console.log(camX)
+		// 	} else{
+		// 		this.backgroundArr.mountain[i].x=0
+		// 	}
+		// 	let step = (parseInt(i) + 2) / this.backgroundArr.mountain.length;
+		// 	this.backgroundArr.mountain[i].tilePosition.x = -camX * step;
+		// }
 	}
 }
 

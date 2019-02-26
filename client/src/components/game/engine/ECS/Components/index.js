@@ -59,15 +59,20 @@ class Size {
 	}
 }
 
-class Velocity{
-    constructor(x=2){
-        this.name="Velocity";
-        this.x=x
-    }
+class Velocity {
+	constructor(x = 2) {
+		this.name = "Velocity";
+		this.x = x;
+	}
 }
 
-class Behaviour{
-	constructor(spawnPoint,activationRange=1000,attackRange=300,followRange=500){
+class Behaviour {
+	constructor(
+		spawnPoint,
+		activationRange = 1000,
+		attackRange = 300,
+		followRange = 500
+	) {
 		this.name = "Behaviour";
 		this.activationRange = activationRange;
 		this.attackRange = attackRange;
@@ -77,19 +82,41 @@ class Behaviour{
 	}
 }
 
-class Stats{
-	constructor(health=100){
-		this.name="Stats";
-		this.health=health;
+class Stats {
+	constructor(health = 100) {
+		this.name = "Stats";
+		this.health = health;
 	}
 }
 
-class Commands{
-	constructor(mode="follow"){
-		this.name="Commands";
-		this.mode=mode;
-		this.holdPoint=100;
+class Commands {
+	constructor(mode = "follow") {
+		this.name = "Commands";
+		this.mode = mode;
+		this.holdPoint = 100;
 	}
-} 
+}
 
-export { Position, Camera, Sprite, Movement, Faction, Weapon, Size,Velocity,Behaviour,Stats,Commands };
+class Resources {
+	constructor(food = 50, metal = 0, gun = 0) {
+		this.name = "Resources";
+		this.food = food;
+		this.metal = metal;
+		this.gun = gun;
+	}
+}
+
+export {
+	Position,
+	Camera,
+	Sprite,
+	Movement,
+	Faction,
+	Weapon,
+	Size,
+	Velocity,
+	Behaviour,
+	Stats,
+	Commands,
+	Resources
+};

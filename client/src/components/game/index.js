@@ -21,7 +21,7 @@ class GameScreen extends Component {
 	}
 
 	guiListener = e => {
-
+		this.engine.spawnUnits()
 	};
 
 	render() {

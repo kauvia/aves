@@ -1,8 +1,9 @@
 //Swapping what sprites to show for entities with multiple sprites
 class SpriteUpdateSys {
-	constructor(playerUnitArr, npcUnitArrArr, backgroundArr, stage) {
+	constructor(playerUnitArr, npcUnitArrArr,buildingArr,backgroundArr, stage) {
 		this.playerUnitArr = playerUnitArr;
 		this.npcUnitArrArr = npcUnitArrArr;
+		this.buildingArr=buildingArr;
 		this.backgroundArr = backgroundArr;
 		this.stage = stage;
 	}
@@ -94,6 +95,9 @@ class SpriteUpdateSys {
 		for (let i in this.npcUnitArrArr) {
 			this.updateAnimatedSprites(this.npcUnitArrArr, i);
 		}
+		// for (let i in this.buildingArr) {
+		// 	this.updateAnimatedSprites(this.buildingArr, i);
+		// }
 	}
 }
 

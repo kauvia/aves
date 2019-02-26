@@ -22,7 +22,8 @@ class GameGui extends Component {
 				>
 					<button onClick={this.handleChunks}>Spawn chunks</button>
 					<div>FPS : {this.props.tester.fps}</div>
-					<div>Order : {this.props.tester.command}</div>
+					<div>Command : {this.props.tester.command}</div>
+					<div>Food : {this.props.tester.food}</div>
 
 				</div>
 				<div

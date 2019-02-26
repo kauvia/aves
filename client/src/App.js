@@ -6,7 +6,7 @@ class App extends Component {
 	constructor(props) {
     super(props);
     // for prod
-//		this.state = {display:{StartScreen:"block",GameScreen:"none"}};
+//	this.state = {display:{StartScreen:"block",GameScreen:"none"}};
     // for testing game
 		this.state = {display:{StartScreen:"none",GameScreen:"block"}};
 

@@ -10,6 +10,8 @@ import SpriteUpdateSys from "./ECS/Systems/spriteUpdateSys";
 import NpcMovementSys from "./ECS/Systems/npcMovementSys";
 import AISys from "./ECS/Systems/aiSys";
 
+const ranN = num => Math.floor(Math.random() * num); //return random number from 0-num
+
 class Engine {
 	constructor(SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600) {
 		//Screen size
@@ -31,6 +33,7 @@ class Engine {
 		//entity arrs
 		this.playerUnitArr = [];
 		this.npcUnitArr = [];
+		this.buildingArr = [];
 		this.backgroundArr = { forest: [], mountain: [], city: [] };
 
 		this.spritesObj = {};
@@ -67,6 +70,7 @@ class Engine {
 		this.RenderSys = new RenderSys(
 			this.playerUnitArr,
 			this.npcUnitArr,
+			this.buildingArr,
 			this.backgroundArr,
 			this.camera,
 			this.SCREEN_WIDTH,
@@ -85,6 +89,7 @@ class Engine {
 		this.SpriteUpdateSys = new SpriteUpdateSys(
 			this.playerUnitArr,
 			this.npcUnitArr,
+			this.buildingArr,
 			this.backgroundArr,
 			this.unitStage
 		);
@@ -93,7 +98,7 @@ class Engine {
 			this.playerUnitArr,
 			this.npcUnitArr
 		);
-		this.AISys = new AISys(this.playerUnitArr, this.npcUnitArr,this.player);
+		this.AISys = new AISys(this.playerUnitArr, this.npcUnitArr, this.player);
 	}
 	loadMedia() {
 		console.log("loading media");
@@ -102,11 +107,15 @@ class Engine {
 			.add("../assets/caveman-walking.json")
 			.add("../assets/skeleton.json")
 
+			.add("../assets/campfire.json")
+
+			.add("building-01","../assets/building-01.png")
+
 			.add("forest-back-trees", "../assets/parallax-forest-back-trees.png")
 			.add("forest-lights", "../assets/parallax-forest-lights.png")
 			.add("forest-middle-trees", "../assets/parallax-forest-middle-trees.png")
 			.add("forest-front-trees", "../assets/parallax-forest-front-trees.png")
-		
+
 			.add("mountain-1", "../assets/Hills-Layer-01.png")
 			.add("mountain-2", "../assets/Hills-Layer-02.png")
 			.add("mountain-3", "../assets/Hills-Layer-03.png")
@@ -174,10 +183,7 @@ class Engine {
 
 		this.forestStage.addChild(this.tilingMidTreesSprite);
 
-	//	this.foregroundStage.addChild(this.tilingFrontTreesSprite);
-
-
-
+			this.foregroundStage.addChild(this.tilingFrontTreesSprite);
 	}
 
 	onAssetLoaded = () => {
@@ -236,22 +242,103 @@ class Engine {
 				PIXI.Texture.fromFrame("skeleton-dead-" + i + ".png")
 			);
 		}
-
-
-
-			//MOUNTAINS
-		for (let i = 1;i<=6;i++){
-			let texture = PIXI.Texture.fromFrame("mountain-"+i);
-			let tilingSprite = new PIXI.extras.TilingSprite(texture,1200,256);
-			tilingSprite.y=104;
-			this.mountainStage.addChild(tilingSprite)
-			this.backgroundArr.mountain.push(tilingSprite)
+		//CAMPFIRE
+		this.spritesObj.campfireFrames = [];
+		for (let i = 1; i <= 5; i++) {
+			this.spritesObj.campfireFrames.push(
+				PIXI.Texture.fromFrame("campfire-" + i + ".png")
+			);
 		}
-console.log(this.mountainStage)
+
+		//MOUNTAINS
+		for (let i = 1; i <= 6; i++) {
+			let texture = PIXI.Texture.fromFrame("mountain-" + i);
+			let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 256);
+			tilingSprite.y = 104;
+		//	this.mountainStage.addChild(tilingSprite);
+	//		this.backgroundArr.mountain.push(tilingSprite);
+		}
+		console.log(this.mountainStage);
 
 		this.loadEntities();
 	};
+	spawnUnits() {
+		let targetCamp;
+		for (let i in this.buildingArr) {
+			let distance = 1000000000000000;
+			let tempD = Math.abs(
+				this.player.Position.x - this.buildingArr[i].Position.x
+			);
+			if (tempD < distance && tempD < 200) {
+				distance = tempD;
+				targetCamp = this.buildingArr[i];
+			}
+		}
+		if (targetCamp && this.player.Resources.food>=10) {
+			this.player.Resources.food -= 10;
+			
+			let fren = new Entity();
+			let spawnPos = targetCamp.Position.x;
+
+			fren.addComponent(new Components.Position(spawnPos, 320));
+			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Size(32, 32));
+			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+
+			fren.addComponent(new Components.Stats());
+			fren.addComponent(
+				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+			);
+
+			fren.addComponent(new Components.Movement());
+			fren.addComponent(new Components.Faction("playerUnit"));
+			fren.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
+				)
+			);
+			this.playerUnitArr.push(fren);
+			fren.Sprite.idle.animationSpeed = 0.2;
+			fren.Sprite.idle.play();
+			this.unitStage.addChild(fren.Sprite.idle);
+		}
+	}
+
 	loadEntities = () => {
+		
+		for (let i = 0; i < 10; i++) {
+			let spawnPos = i * 2000;
+			let building = new Entity();
+			building.addComponent(new Components.Position(spawnPos, 305));
+			building.addComponent(new Components.Size(32, 32));
+			building.addComponent(new Components.Faction("player"));
+			building.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(PIXI.Texture.fromFrame("building-01"))
+				)
+			);
+			this.buildingArr.push(building);
+		}
+
+
+
+		for (let i = 0; i < 10; i++) {
+			let spawnPos = i * 2000;
+			let campfire = new Entity();
+			campfire.addComponent(new Components.Position(spawnPos, 305));
+			campfire.addComponent(new Components.Size(32, 32));
+			campfire.addComponent(new Components.Faction("player"));
+			campfire.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.campfireFrames)
+				)
+			);
+			this.buildingArr.push(campfire);
+		}
+
 		this.player = new Entity();
 		this.player.addComponent(new Components.Position(20, 320));
 		this.player.addComponent(new Components.Weapon());
@@ -259,8 +346,9 @@ console.log(this.mountainStage)
 		this.player.addComponent(new Components.Velocity(3));
 
 		this.player.addComponent(new Components.Stats());
+		this.player.addComponent(new Components.Resources());
 
-		this.player.addComponent(new Components.Commands())
+		this.player.addComponent(new Components.Commands());
 		this.player.addComponent(new Components.Movement());
 		this.player.addComponent(new Components.Faction("player"));
 		this.player.addComponent(
@@ -274,7 +362,7 @@ console.log(this.mountainStage)
 		this.playerUnitArr.push(this.player);
 
 		let pen = new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames);
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 10; i++) {
 			let fren = new Entity();
 			let spawnPos = Math.random() * 500;
 
@@ -296,15 +384,15 @@ console.log(this.mountainStage)
 					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
 				)
 			);
-	//		this.npcUnitArr.push(fren);
+			//		this.npcUnitArr.push(fren);
 		}
 		for (let i = 0; i < 2; i++) {
 			let skelly = new Entity();
 			let spawnPos = Math.random() * 500;
-			spawnPos=600;
+			spawnPos = 600;
 
 			skelly.addComponent(new Components.Position(spawnPos, 320));
-			skelly.addComponent(new Components.Weapon("pikeaxe","melee",20,25));
+			skelly.addComponent(new Components.Weapon("pikeaxe", "melee", 20, 25));
 			skelly.addComponent(new Components.Size(32, 32));
 			skelly.addComponent(new Components.Velocity(Math.random() * 1 + 1));
 
@@ -334,7 +422,9 @@ console.log(this.mountainStage)
 			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
 
 			fren.addComponent(new Components.Stats());
-			fren.addComponent(new Components.Behaviour(spawnPos,1000,300,20+Math.random()*100));
+			fren.addComponent(
+				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+			);
 
 			fren.addComponent(new Components.Movement());
 			fren.addComponent(new Components.Faction("playerUnit"));
@@ -361,20 +451,26 @@ console.log(this.mountainStage)
 			this.unitStage.addChild(this.npcUnitArr[i].Sprite.idle);
 		}
 
-		this.backgroundStage.addChild(this.forestStage)
-		this.backgroundStage.addChild(this.mountainStage)
-		this.backgroundStage.addChild(this.cityStage)
+		for (let i in this.buildingArr) {
+			this.buildingArr[i].Sprite.idle.animationSpeed = 0.2;
+			this.buildingArr[i].Sprite.idle.play();
+			this.unitStage.addChild(this.buildingArr[i].Sprite.idle);
+		}
+
+		this.backgroundStage.addChild(this.forestStage);
+		this.backgroundStage.addChild(this.mountainStage);
+		this.backgroundStage.addChild(this.cityStage);
 
 		this.stage.addChild(this.backgroundStage);
 		this.stage.addChild(this.unitStage);
 		console.log(this.stage);
-			this.stage.addChild(this.foregroundStage);
+		this.stage.addChild(this.foregroundStage);
 
 		this.loadSystems();
 		this.allLoaded = true;
 	};
 	update(dt) {
-	//	console.log(this.stage)
+		//	console.log(this.stage)
 		//Trottle interation updates
 		this.KeyboardListenerSys.inputListener();
 		// Update game stuff here
@@ -391,7 +487,11 @@ console.log(this.mountainStage)
 		this.RenderSys.update();
 
 		if (Math.random() > 0.9) {
-			this.guiUpdater({fps:(1 / dt) * 60,command:this.player.Commands.mode});
+			this.guiUpdater({
+				fps: (1 / dt) * 60,
+				command: this.player.Commands.mode,
+				food:this.player.Resources.food
+			});
 		}
 	}
 
