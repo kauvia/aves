@@ -1,0 +1,335 @@
+{"frames": {
+
+"dog Dead (1).png":
+{
+	"frame": {"x":0,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (2).png":
+{
+	"frame": {"x":116,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (3).png":
+{
+	"frame": {"x":232,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (4).png":
+{
+	"frame": {"x":348,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (5).png":
+{
+	"frame": {"x":464,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (6).png":
+{
+	"frame": {"x":580,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (7).png":
+{
+	"frame": {"x":696,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (8).png":
+{
+	"frame": {"x":812,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (9).png":
+{
+	"frame": {"x":928,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Dead (10).png":
+{
+	"frame": {"x":1044,"y":0,"w":116,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":116,"h":102},
+	"sourceSize": {"w":116,"h":102},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (1).png":
+{
+	"frame": {"x":1160,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (2).png":
+{
+	"frame": {"x":1269,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (3).png":
+{
+	"frame": {"x":1378,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (4).png":
+{
+	"frame": {"x":1487,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (5).png":
+{
+	"frame": {"x":1596,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (6).png":
+{
+	"frame": {"x":1705,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (7).png":
+{
+	"frame": {"x":1814,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (8).png":
+{
+	"frame": {"x":1923,"y":0,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (9).png":
+{
+	"frame": {"x":0,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Idle (10).png":
+{
+	"frame": {"x":109,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (1).png":
+{
+	"frame": {"x":218,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (2).png":
+{
+	"frame": {"x":327,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (3).png":
+{
+	"frame": {"x":436,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (4).png":
+{
+	"frame": {"x":545,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (5).png":
+{
+	"frame": {"x":654,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (6).png":
+{
+	"frame": {"x":763,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (7).png":
+{
+	"frame": {"x":872,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Jump (8).png":
+{
+	"frame": {"x":981,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (1).png":
+{
+	"frame": {"x":1090,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (2).png":
+{
+	"frame": {"x":1199,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (3).png":
+{
+	"frame": {"x":1308,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (4).png":
+{
+	"frame": {"x":1417,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (5).png":
+{
+	"frame": {"x":1526,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (6).png":
+{
+	"frame": {"x":1635,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (7).png":
+{
+	"frame": {"x":1744,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dog Run (8).png":
+{
+	"frame": {"x":1853,"y":102,"w":109,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":96},
+	"sourceSize": {"w":109,"h":96},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dog.png",
+	"format": "RGBA8888",
+	"size": {"w":2032,"h":198},
+	"smartupdate": "$TexturePacker:SmartUpdate:9b3b02e533ab6e9d7d4d52c8ce406ef6:a25f9726840d263d0aaf80dd31c65d54:ec6c3e0b9eb3cd3c555a7c426f3b0ee8$"
+}
+}

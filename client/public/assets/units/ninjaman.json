@@ -1,0 +1,377 @@
+{"frames": {
+
+"ninjaman Attack__000.png":
+{
+	"frame": {"x":321,"y":480,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__001.png":
+{
+	"frame": {"x":0,"y":480,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__002.png":
+{
+	"frame": {"x":395,"y":380,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__003.png":
+{
+	"frame": {"x":288,"y":380,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__004.png":
+{
+	"frame": {"x":107,"y":480,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__005.png":
+{
+	"frame": {"x":0,"y":579,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__006.png":
+{
+	"frame": {"x":214,"y":579,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__007.png":
+{
+	"frame": {"x":321,"y":579,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__008.png":
+{
+	"frame": {"x":107,"y":579,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Attack__009.png":
+{
+	"frame": {"x":214,"y":480,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":99},
+	"sourceSize": {"w":107,"h":99},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__000.png":
+{
+	"frame": {"x":0,"y":280,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__001.png":
+{
+	"frame": {"x":96,"y":280,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__002.png":
+{
+	"frame": {"x":192,"y":280,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__003.png":
+{
+	"frame": {"x":388,"y":180,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__004.png":
+{
+	"frame": {"x":292,"y":180,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__005.png":
+{
+	"frame": {"x":288,"y":280,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__006.png":
+{
+	"frame": {"x":192,"y":380,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__007.png":
+{
+	"frame": {"x":96,"y":380,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__008.png":
+{
+	"frame": {"x":384,"y":280,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Dead__009.png":
+{
+	"frame": {"x":0,"y":380,"w":96,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":100},
+	"sourceSize": {"w":96,"h":100},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__000.png":
+{
+	"frame": {"x":414,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__001.png":
+{
+	"frame": {"x":368,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__002.png":
+{
+	"frame": {"x":230,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__003.png":
+{
+	"frame": {"x":322,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__004.png":
+{
+	"frame": {"x":276,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__005.png":
+{
+	"frame": {"x":184,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__006.png":
+{
+	"frame": {"x":138,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__007.png":
+{
+	"frame": {"x":46,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__008.png":
+{
+	"frame": {"x":0,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Idle__009.png":
+{
+	"frame": {"x":92,"y":0,"w":46,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":88},
+	"sourceSize": {"w":46,"h":88},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__000.png":
+{
+	"frame": {"x":292,"y":88,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__001.png":
+{
+	"frame": {"x":0,"y":88,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__002.png":
+{
+	"frame": {"x":0,"y":180,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__003.png":
+{
+	"frame": {"x":146,"y":180,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__004.png":
+{
+	"frame": {"x":73,"y":180,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__005.png":
+{
+	"frame": {"x":365,"y":88,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__006.png":
+{
+	"frame": {"x":219,"y":88,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__007.png":
+{
+	"frame": {"x":73,"y":88,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__008.png":
+{
+	"frame": {"x":146,"y":88,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ninjaman Run__009.png":
+{
+	"frame": {"x":219,"y":180,"w":73,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":92},
+	"sourceSize": {"w":73,"h":92},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"ninjaman Attack_": ["ninjaman Attack__000.png","ninjaman Attack__001.png","ninjaman Attack__002.png","ninjaman Attack__003.png","ninjaman Attack__004.png","ninjaman Attack__005.png","ninjaman Attack__006.png","ninjaman Attack__007.png","ninjaman Attack__008.png","ninjaman Attack__009.png"],
+	"ninjaman Dead_": ["ninjaman Dead__000.png","ninjaman Dead__001.png","ninjaman Dead__002.png","ninjaman Dead__003.png","ninjaman Dead__004.png","ninjaman Dead__005.png","ninjaman Dead__006.png","ninjaman Dead__007.png","ninjaman Dead__008.png","ninjaman Dead__009.png"],
+	"ninjaman Idle_": ["ninjaman Idle__000.png","ninjaman Idle__001.png","ninjaman Idle__002.png","ninjaman Idle__003.png","ninjaman Idle__004.png","ninjaman Idle__005.png","ninjaman Idle__006.png","ninjaman Idle__007.png","ninjaman Idle__008.png","ninjaman Idle__009.png"],
+	"ninjaman Run_": ["ninjaman Run__000.png","ninjaman Run__001.png","ninjaman Run__002.png","ninjaman Run__003.png","ninjaman Run__004.png","ninjaman Run__005.png","ninjaman Run__006.png","ninjaman Run__007.png","ninjaman Run__008.png","ninjaman Run__009.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ninjaman.png",
+	"format": "RGBA8888",
+	"size": {"w":502,"h":678},
+	"smartupdate": "$TexturePacker:SmartUpdate:4309ca5f87a488b6bba4e6d1cabbcb6e:f7940ec07b5752c323fc9e5ec66dc2c2:81cc19d57e8ae3fed144987826668ad1$"
+}
+}

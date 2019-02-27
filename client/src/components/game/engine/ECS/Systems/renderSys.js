@@ -77,12 +77,12 @@ class RenderSys {
 
 
 		for (let i in this.backgroundArr.forest) {
-			let step = (parseInt(i) + 2) / this.backgroundArr.forest.length;
+			let step = (parseInt(i)*2 + 2) / this.backgroundArr.forest.length;
 			this.backgroundArr.forest[i].tilePosition.x = -camX * step;
 		}
 		for (let i in this.backgroundArr.mountain) {
 
-			let step = (parseInt(i) + 2) / this.backgroundArr.mountain.length;
+			let step = (parseInt(i)*2 + 2) / this.backgroundArr.mountain.length;
 			this.backgroundArr.mountain[i].tilePosition.x = -camX * step;
 		}
 	}

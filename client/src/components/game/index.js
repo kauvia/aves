@@ -5,7 +5,7 @@ import GameGui from "./gui";
 class GameScreen extends Component {
 	constructor(props) {
 		super(props);
-		this.engine = new Engine(1200, 600);
+		this.engine = new Engine(1366, 768);
 		this.state = { test: 0 };
 	}
 	componentDidMount() {
@@ -21,7 +21,7 @@ class GameScreen extends Component {
 	}
 
 	guiListener = e => {
-		this.engine.spawnUnits()
+		this.engine.buyUnits(e.target.dataset.id)
 	};
 
 	render() {

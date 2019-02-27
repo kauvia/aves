@@ -1,0 +1,290 @@
+{"frames": {
+
+"gungirl Dead (1).png":
+{
+	"frame": {"x":0,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (2).png":
+{
+	"frame": {"x":121,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (3).png":
+{
+	"frame": {"x":242,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (4).png":
+{
+	"frame": {"x":363,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (5).png":
+{
+	"frame": {"x":484,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (6).png":
+{
+	"frame": {"x":605,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (7).png":
+{
+	"frame": {"x":726,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (8).png":
+{
+	"frame": {"x":847,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (9).png":
+{
+	"frame": {"x":968,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Dead (10).png":
+{
+	"frame": {"x":1089,"y":0,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (1).png":
+{
+	"frame": {"x":1210,"y":0,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (2).png":
+{
+	"frame": {"x":1338,"y":0,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (3).png":
+{
+	"frame": {"x":1466,"y":0,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (4).png":
+{
+	"frame": {"x":1594,"y":0,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (5).png":
+{
+	"frame": {"x":1722,"y":0,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (6).png":
+{
+	"frame": {"x":1850,"y":0,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (7).png":
+{
+	"frame": {"x":0,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (8).png":
+{
+	"frame": {"x":128,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (9).png":
+{
+	"frame": {"x":256,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Idle (10).png":
+{
+	"frame": {"x":384,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (1).png":
+{
+	"frame": {"x":512,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (2).png":
+{
+	"frame": {"x":640,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (3).png":
+{
+	"frame": {"x":768,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (4).png":
+{
+	"frame": {"x":896,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (5).png":
+{
+	"frame": {"x":1024,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (6).png":
+{
+	"frame": {"x":1152,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (7).png":
+{
+	"frame": {"x":1280,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Run (8).png":
+{
+	"frame": {"x":1408,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Shoot (1).png":
+{
+	"frame": {"x":1536,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Shoot (2).png":
+{
+	"frame": {"x":1664,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"gungirl Shoot (3).png":
+{
+	"frame": {"x":1792,"y":121,"w":128,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":108},
+	"sourceSize": {"w":128,"h":108},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "gungirl.png",
+	"format": "RGBA8888",
+	"size": {"w":1978,"h":229},
+	"smartupdate": "$TexturePacker:SmartUpdate:eaa1ab74c163a1de56f598969c6c9c67:b5549f4d41d7111253dd2bc5545e3684:c2ef2f77fb7106def4a3ef42beb623b7$"
+}
+}

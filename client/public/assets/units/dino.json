@@ -1,0 +1,353 @@
+{"frames": {
+
+"dino Dead (1).png":
+{
+	"frame": {"x":0,"y":0,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (2).png":
+{
+	"frame": {"x":136,"y":0,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (3).png":
+{
+	"frame": {"x":272,"y":0,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (4).png":
+{
+	"frame": {"x":0,"y":94,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (5).png":
+{
+	"frame": {"x":136,"y":94,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (6).png":
+{
+	"frame": {"x":272,"y":94,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (7).png":
+{
+	"frame": {"x":0,"y":188,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Dead (8).png":
+{
+	"frame": {"x":136,"y":188,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (1).png":
+{
+	"frame": {"x":272,"y":188,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (2).png":
+{
+	"frame": {"x":0,"y":282,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (3).png":
+{
+	"frame": {"x":136,"y":282,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (4).png":
+{
+	"frame": {"x":272,"y":282,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (5).png":
+{
+	"frame": {"x":0,"y":376,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (6).png":
+{
+	"frame": {"x":136,"y":376,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (7).png":
+{
+	"frame": {"x":272,"y":376,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (8).png":
+{
+	"frame": {"x":0,"y":470,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (9).png":
+{
+	"frame": {"x":136,"y":470,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Idle (10).png":
+{
+	"frame": {"x":272,"y":470,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (1).png":
+{
+	"frame": {"x":0,"y":564,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (2).png":
+{
+	"frame": {"x":136,"y":564,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (3).png":
+{
+	"frame": {"x":272,"y":564,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (4).png":
+{
+	"frame": {"x":0,"y":658,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (5).png":
+{
+	"frame": {"x":136,"y":658,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (6).png":
+{
+	"frame": {"x":272,"y":658,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (7).png":
+{
+	"frame": {"x":0,"y":752,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (8).png":
+{
+	"frame": {"x":136,"y":752,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (9).png":
+{
+	"frame": {"x":272,"y":752,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (10).png":
+{
+	"frame": {"x":0,"y":846,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (11).png":
+{
+	"frame": {"x":136,"y":846,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Jump (12).png":
+{
+	"frame": {"x":272,"y":846,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (1).png":
+{
+	"frame": {"x":0,"y":940,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (2).png":
+{
+	"frame": {"x":136,"y":940,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (3).png":
+{
+	"frame": {"x":272,"y":940,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (4).png":
+{
+	"frame": {"x":0,"y":1034,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (5).png":
+{
+	"frame": {"x":136,"y":1034,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (6).png":
+{
+	"frame": {"x":272,"y":1034,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (7).png":
+{
+	"frame": {"x":0,"y":1128,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"dino Run (8).png":
+{
+	"frame": {"x":136,"y":1128,"w":136,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":94},
+	"sourceSize": {"w":136,"h":94},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dino.png",
+	"format": "RGBA8888",
+	"size": {"w":408,"h":1222},
+	"smartupdate": "$TexturePacker:SmartUpdate:94df771a62b4b8c1f8f3d04a29a8e71b:e5d724b979a674a6648b348a11511deb:604dd05d6aaab271297d13217355623b$"
+}
+}

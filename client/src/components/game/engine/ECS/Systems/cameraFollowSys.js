@@ -14,20 +14,15 @@ class CameraFollowSys {
 			this.timer = Date.now();
 		}
 		this.difference = (now - this.timer) / 1000;
-//		console.log(this.target.Movement.idle)
 		if (
-			//		distance > -100 &&
 			this.target.Movement.direction == "right" &&
 			!this.target.Movement.idle
 		) {
-//			console.log("target")
 			this.camera.Position.x += this.target.Velocity.x;
 		} else if (
 			this.target.Movement.direction == "left" &&
 			!this.target.Movement.idle
 		) {
-//			console.log("target")
-
 			this.camera.Position.x -= this.target.Velocity.x;
 		} else if (
 			distance > -100 &&
@@ -35,7 +30,6 @@ class CameraFollowSys {
 			this.target.Movement.idle
 		) {
 			if (this.difference > 1) {
-//				console.log("vame")
 
 				this.camera.Position.x += this.camera.Velocity.x;
 			}
@@ -45,10 +39,15 @@ class CameraFollowSys {
 			this.target.Movement.idle
 		) {
 			if (this.difference > 1) {
-//				console.log("targcameet")
 
 				this.camera.Position.x -= this.camera.Velocity.x;
 			}
+		}
+		if (this.target.Position.x<100 || this.camera.Position.x<450){
+			this.camera.Position.x = 450;
+		}
+		else if (this.target.Position.x>4900 || this.camera.Position.x>4550){
+			this.camera.Position.x = 4550;
 		}
 	}
 }

@@ -30,6 +30,8 @@ class Engine {
 
 		this.oldTime = Date.now();
 		this.allLoaded = false;
+
+		this.pause = false;
 		//entity arrs
 		this.playerUnitArr = [];
 		this.npcUnitArr = [];
@@ -109,14 +111,47 @@ class Engine {
 			.add("../assets/caveman-walking.json")
 			.add("../assets/skeleton.json")
 
+			.add("../assets/units/gungirl.json")
+			.add("../assets/units/player.json")
+			.add("../assets/units/cat.json")
+			.add("../assets/units/dog.json")
+			.add("../assets/units/dino.json")
+			.add("../assets/units/jack.json")
+			.add("../assets/units/knight.json")
+			.add("../assets/units/ninjagirl.json")
+			.add("../assets/units/ninjaman.json")
+			.add("../assets/units/robot.json")
+			.add("../assets/units/zombiefemale.json")
+			.add("../assets/units/zombiemale.json")
+			.add("../assets/units/boy.json")
+
 			.add("../assets/campfire.json")
 
 			.add("building-01", "../assets/building-01.png")
 
-			.add("forest-1", "../assets/parallax-forest-back-trees.png")
-			.add("forest-2", "../assets/parallax-forest-lights.png")
-			.add("forest-3", "../assets/parallax-forest-middle-trees.png")
-			.add("forest-4", "../assets/parallax-forest-front-trees.png")
+			.add("desert1-1", "../assets/desert/1/1.png")
+			.add("desert1-2", "../assets/desert/1/2.png")
+			.add("desert1-3", "../assets/desert/1/3.png")
+			.add("desert1-4", "../assets/desert/1/4.png")
+			.add("desert1-5", "../assets/desert/1/5.png")
+
+			.add("desert2-1", "../assets/desert/2/1.png")
+			.add("desert2-2", "../assets/desert/2/2.png")
+			.add("desert2-3", "../assets/desert/2/3.png")
+			.add("desert2-4", "../assets/desert/2/4.png")
+			.add("desert2-5", "../assets/desert/2/5.png")
+
+			.add("desert3-1", "../assets/desert/3/1.png")
+			.add("desert3-2", "../assets/desert/3/2.png")
+			.add("desert3-3", "../assets/desert/3/3.png")
+			.add("desert3-4", "../assets/desert/3/4.png")
+			.add("desert3-5", "../assets/desert/3/5.png")
+
+			.add("desert4-1", "../assets/desert/4/1.png")
+			.add("desert4-2", "../assets/desert/4/2.png")
+			.add("desert4-3", "../assets/desert/4/3.png")
+			.add("desert4-4", "../assets/desert/4/4.png")
+			.add("desert4-5", "../assets/desert/4/5.png")
 
 			.add("mountain-1", "../assets/Hills-Layer-01.png")
 			.add("mountain-2", "../assets/Hills-Layer-02.png")
@@ -129,59 +164,365 @@ class Engine {
 	}
 
 	onAssetLoaded = () => {
-		this.spritesObj.cavemanWalkFrames = [];
-		for (let i = 1; i <= 16; i++) {
-			this.spritesObj.cavemanWalkFrames.push(
-				PIXI.Texture.fromFrame("caveman-running-" + i + ".png")
-			);
-		}
-
-		this.spritesObj.cavemanIdleFrames = [];
-		for (let i = 1; i <= 4; i++) {
-			this.spritesObj.cavemanIdleFrames.push(
-				PIXI.Texture.fromFrame("caveman-idle-" + i + ".png")
-			);
-		}
-
-		this.spritesObj.cavemanAttackFrames = [];
+		//Gungirl
+		this.spritesObj.gungirlWalkFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.cavemanAttackFrames.push(
-				PIXI.Texture.fromFrame("caveman-attack-" + i + ".png")
+			this.spritesObj.gungirlWalkFrames.push(
+				PIXI.Texture.fromFrame("gungirl Run (" + i + ").png")
 			);
 		}
-
-		this.spritesObj.cavemanDeathFrames = [];
-		for (let i = 1; i <= 4; i++) {
-			this.spritesObj.cavemanDeathFrames.push(
-				PIXI.Texture.fromFrame("caveman-death-" + i + ".png")
+		this.spritesObj.gungirlAttackFrames = [];
+		for (let i = 1; i <= 3; i++) {
+			this.spritesObj.gungirlAttackFrames.push(
+				PIXI.Texture.fromFrame("gungirl Shoot (" + i + ").png")
 			);
 		}
-
-		this.spritesObj.skeletonWalkFrames = [];
-		for (let i = 1; i <= 13; i++) {
-			this.spritesObj.skeletonWalkFrames.push(
-				PIXI.Texture.fromFrame("skeleton-walk-" + i + ".png")
-			);
-		}
-
-		this.spritesObj.skeletonIdleFrames = [];
+		this.spritesObj.gungirlDeathFrames = [];
 		for (let i = 1; i <= 10; i++) {
-			this.spritesObj.skeletonIdleFrames.push(
-				PIXI.Texture.fromFrame("skeleton-idle-" + i + ".png")
+			this.spritesObj.gungirlDeathFrames.push(
+				PIXI.Texture.fromFrame("gungirl Dead (" + i + ").png")
+			);
+		}
+		this.spritesObj.gungirlIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.gungirlIdleFrames.push(
+				PIXI.Texture.fromFrame("gungirl Idle (" + i + ").png")
+			);
+		}
+		//Player
+		this.spritesObj.playerWalkFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.playerWalkFrames.push(
+				PIXI.Texture.fromFrame("player Run__00" + i + ".png")
 			);
 		}
 
-		this.spritesObj.skeletonAttackFrames = [];
-		for (let i = 1; i <= 15; i++) {
-			this.spritesObj.skeletonAttackFrames.push(
-				PIXI.Texture.fromFrame("skeleton-attack-" + i + ".png")
+		this.spritesObj.playerIdleFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.playerIdleFrames.push(
+				PIXI.Texture.fromFrame("player Idle__00" + i + ".png")
 			);
 		}
 
-		this.spritesObj.skeletonDeathFrames = [];
+		this.spritesObj.playerAttackFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.playerAttackFrames.push(
+				PIXI.Texture.fromFrame("player Slide__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.playerDeathFrames = [];
+		for (let i = 0; i <= 4; i++) {
+			this.spritesObj.playerDeathFrames.push(
+				PIXI.Texture.fromFrame("player Dead__00" + i + ".png")
+			);
+		}
+		//cat
+		this.spritesObj.catWalkFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.skeletonDeathFrames.push(
-				PIXI.Texture.fromFrame("skeleton-dead-" + i + ".png")
+			this.spritesObj.catWalkFrames.push(
+				PIXI.Texture.fromFrame("cat Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.catIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.catIdleFrames.push(
+				PIXI.Texture.fromFrame("cat Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.catAttackFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.catAttackFrames.push(
+				PIXI.Texture.fromFrame("cat Jump (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.catDeathFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.catDeathFrames.push(
+				PIXI.Texture.fromFrame("cat Dead (" + i + ").png")
+			);
+		}
+		//dino
+		this.spritesObj.dinoWalkFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.dinoWalkFrames.push(
+				PIXI.Texture.fromFrame("dino Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.dinoIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.dinoIdleFrames.push(
+				PIXI.Texture.fromFrame("dino Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.dinoAttackFrames = [];
+		for (let i = 1; i <= 12; i++) {
+			this.spritesObj.dinoAttackFrames.push(
+				PIXI.Texture.fromFrame("dino Jump (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.dinoDeathFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.dinoDeathFrames.push(
+				PIXI.Texture.fromFrame("dino Dead (" + i + ").png")
+			);
+		}
+		//dog
+		this.spritesObj.dogWalkFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.dogWalkFrames.push(
+				PIXI.Texture.fromFrame("dog Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.dogIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.dogIdleFrames.push(
+				PIXI.Texture.fromFrame("dog Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.dogAttackFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.dogAttackFrames.push(
+				PIXI.Texture.fromFrame("dog Jump (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.dogDeathFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.dogDeathFrames.push(
+				PIXI.Texture.fromFrame("dog Dead (" + i + ").png")
+			);
+		}
+		//jack
+		this.spritesObj.jackWalkFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.jackWalkFrames.push(
+				PIXI.Texture.fromFrame("jack Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.jackIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.jackIdleFrames.push(
+				PIXI.Texture.fromFrame("jack Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.jackAttackFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.jackAttackFrames.push(
+				PIXI.Texture.fromFrame("jack Slide (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.jackDeathFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.jackDeathFrames.push(
+				PIXI.Texture.fromFrame("jack Dead (" + i + ").png")
+			);
+		}
+		//knight
+		this.spritesObj.knightWalkFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.knightWalkFrames.push(
+				PIXI.Texture.fromFrame("knight Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.knightIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.knightIdleFrames.push(
+				PIXI.Texture.fromFrame("knight Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.knightAttackFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.knightAttackFrames.push(
+				PIXI.Texture.fromFrame("knight Attack (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.knightDeathFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.knightDeathFrames.push(
+				PIXI.Texture.fromFrame("knight Dead (" + i + ").png")
+			);
+		}
+		//ninjagirl
+		this.spritesObj.ninjagirlWalkFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjagirlWalkFrames.push(
+				PIXI.Texture.fromFrame("ninjagirl Run__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.ninjagirlIdleFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjagirlIdleFrames.push(
+				PIXI.Texture.fromFrame("ninjagirl Idle__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.ninjagirlAttackFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjagirlAttackFrames.push(
+				PIXI.Texture.fromFrame("ninjagirl Attack__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.ninjagirlDeathFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjagirlDeathFrames.push(
+				PIXI.Texture.fromFrame("ninjagirl Dead__00" + i + ".png")
+			);
+		}
+		//ninjaman
+		this.spritesObj.ninjamanWalkFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjamanWalkFrames.push(
+				PIXI.Texture.fromFrame("ninjaman Run__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.ninjamanIdleFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjamanIdleFrames.push(
+				PIXI.Texture.fromFrame("ninjaman Idle__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.ninjamanAttackFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjamanAttackFrames.push(
+				PIXI.Texture.fromFrame("ninjaman Attack__00" + i + ".png")
+			);
+		}
+
+		this.spritesObj.ninjamanDeathFrames = [];
+		for (let i = 0; i <= 9; i++) {
+			this.spritesObj.ninjamanDeathFrames.push(
+				PIXI.Texture.fromFrame("ninjaman Dead__00" + i + ".png")
+			);
+		}
+		//robot
+		this.spritesObj.robotWalkFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.robotWalkFrames.push(
+				PIXI.Texture.fromFrame("robot Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.robotIdleFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.robotIdleFrames.push(
+				PIXI.Texture.fromFrame("robot Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.robotAttackFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.robotAttackFrames.push(
+				PIXI.Texture.fromFrame("robot Melee (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.robotDeathFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.robotDeathFrames.push(
+				PIXI.Texture.fromFrame("robot Dead (" + i + ").png")
+			);
+		}
+		//zombie female
+		this.spritesObj.zombiefemaleWalkFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.zombiefemaleWalkFrames.push(
+				PIXI.Texture.fromFrame("zombiefemale Walk (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.zombiefemaleIdleFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.zombiefemaleIdleFrames.push(
+				PIXI.Texture.fromFrame("zombiefemale Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.zombiefemaleAttackFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.zombiefemaleAttackFrames.push(
+				PIXI.Texture.fromFrame("zombiefemale Attack (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.zombiefemaleDeathFrames = [];
+		for (let i = 1; i <= 12; i++) {
+			this.spritesObj.zombiefemaleDeathFrames.push(
+				PIXI.Texture.fromFrame("zombiefemale Dead (" + i + ").png")
+			);
+		}
+		//zombiemale
+		this.spritesObj.zombiemaleWalkFrames = [];
+		for (let i = 1; i <= 10; i++) {
+			this.spritesObj.zombiemaleWalkFrames.push(
+				PIXI.Texture.fromFrame("zombiemale Walk (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.zombiemaleIdleFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.zombiemaleIdleFrames.push(
+				PIXI.Texture.fromFrame("zombiemale Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.zombiemaleAttackFrames = [];
+		for (let i = 1; i <= 8; i++) {
+			this.spritesObj.zombiemaleAttackFrames.push(
+				PIXI.Texture.fromFrame("zombiemale Attack (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.zombiemaleDeathFrames = [];
+		for (let i = 1; i <= 12; i++) {
+			this.spritesObj.zombiemaleDeathFrames.push(
+				PIXI.Texture.fromFrame("zombiemale Dead (" + i + ").png")
+			);
+		}
+		//boy
+		this.spritesObj.boyWalkFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.boyWalkFrames.push(
+				PIXI.Texture.fromFrame("boy Run (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.boyIdleFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.boyIdleFrames.push(
+				PIXI.Texture.fromFrame("boy Idle (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.boyAttackFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.boyAttackFrames.push(
+				PIXI.Texture.fromFrame("boy Jump (" + i + ").png")
+			);
+		}
+
+		this.spritesObj.boyDeathFrames = [];
+		for (let i = 1; i <= 15; i++) {
+			this.spritesObj.boyDeathFrames.push(
+				PIXI.Texture.fromFrame("boy Dead (" + i + ").png")
 			);
 		}
 		//CAMPFIRE
@@ -191,7 +532,13 @@ class Engine {
 				PIXI.Texture.fromFrame("campfire-" + i + ".png")
 			);
 		}
-
+		//building
+		this.spritesObj.buildingFrames = [];
+		for (let i = 1; i <= 2; i++) {
+			this.spritesObj.buildingFrames.push(
+				PIXI.Texture.fromFrame("building-01")
+			);
+		}
 
 		this.generateLevel();
 	};
@@ -200,23 +547,22 @@ class Engine {
 		// for (let i = 0; i < 10; i++) {
 		// 	let spawnPos = i * 2000;
 		// 	let building = new Entity();
-		// 	building.addComponent(new Components.Position(spawnPos, 305));
+		// 	building.addComponent(new Components.Position(spawnPos, 220));
 		// 	building.addComponent(new Components.Size(32, 32));
-		// 	building.addComponent(new Components.Faction("player"));
+		// 	building.addComponent(new Components.Faction("enemy"));
 		// 	building.addComponent(
 		// 		new Components.Sprite(
-		// 			new PIXI.extras.AnimatedSprite(PIXI.Texture.fromFrame("building-01"))
+		// 			new PIXI.extras.AnimatedSprite(this.spritesObj.buildingFrames)
 		// 		)
 		// 	);
 		// 	this.buildingArr.push(building);
 		// }
 
-
 		//spawn camp(base)
-		for (let i = 0; i < 2; i++) {
-			let spawnPos = i * 2800+100;
+		for (let i = 0; i < 3; i++) {
+			let spawnPos = i * 2400 + 100;
 			let campfire = new Entity();
-			campfire.addComponent(new Components.Position(spawnPos, 305));
+			campfire.addComponent(new Components.Position(spawnPos, 590));
 			campfire.addComponent(new Components.Size(32, 32));
 			campfire.addComponent(new Components.Faction("player"));
 			campfire.addComponent(
@@ -228,35 +574,37 @@ class Engine {
 		}
 
 		//spawn Player
-		this.player = new Entity();
-		this.player.addComponent(new Components.Position(20, 320));
-		this.player.addComponent(new Components.Weapon());
-		this.player.addComponent(new Components.Size(32, 32));
-		this.player.addComponent(new Components.Velocity(3));
+		if (!this.player) {
+			this.player = new Entity();
+			this.player.addComponent(new Components.Position(50, 590));
+			this.player.addComponent(new Components.Weapon());
+			this.player.addComponent(new Components.Size(32, 32));
+			this.player.addComponent(new Components.Velocity(3));
 
-		this.player.addComponent(new Components.Stats());
-		this.player.addComponent(new Components.Resources());
+			this.player.addComponent(new Components.Stats());
+			this.player.addComponent(new Components.Resources());
 
-		this.player.addComponent(new Components.Commands());
-		this.player.addComponent(new Components.Movement());
-		this.player.addComponent(new Components.Faction("player"));
-		this.player.addComponent(
-			new Components.Sprite(
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-				new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
-			)
-		);
+			this.player.addComponent(new Components.Commands());
+			this.player.addComponent(new Components.Movement());
+			this.player.addComponent(new Components.Faction("player"));
+			this.player.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.playerIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.playerWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.playerAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.playerDeathFrames)
+				)
+			);
+		}
 		this.playerUnitArr.push(this.player);
 
-		//spawn Enemy
+		//	spawn Enemy
 		for (let i = 0; i < 2; i++) {
 			let skelly = new Entity();
 			let spawnPos = Math.random() * 500;
 			spawnPos = 600;
 
-			skelly.addComponent(new Components.Position(spawnPos, 320));
+			skelly.addComponent(new Components.Position(spawnPos, 590));
 			skelly.addComponent(new Components.Weapon("pikeaxe", "melee", 20, 25));
 			skelly.addComponent(new Components.Size(32, 32));
 			skelly.addComponent(new Components.Velocity(Math.random() * 1 + 1));
@@ -265,61 +613,114 @@ class Engine {
 			skelly.addComponent(new Components.Behaviour(spawnPos));
 
 			skelly.addComponent(new Components.Movement());
-			skelly.addComponent(new Components.Faction("humanUnit"));
+			skelly.addComponent(new Components.Faction("enemy"));
 			skelly.addComponent(
 				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonIdleFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonWalkFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonAttackFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.skeletonDeathFrames)
+					new PIXI.extras.AnimatedSprite(this.spritesObj.zombiemaleIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.zombiemaleWalkFrames),
+					new PIXI.extras.AnimatedSprite(
+						this.spritesObj.zombiemaleAttackFrames
+					),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.zombiemaleDeathFrames)
 				)
 			);
 			this.npcUnitArr.push(skelly);
 		}
 
-
 		//Setup Background
 		//Forests
-		if (this.level === 1){
-			for (let i = 1; i <= 4; i++) {
-				let texture = PIXI.Texture.fromFrame("forest-" + i);
-				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 160);
-				tilingSprite.y = 200;
-				if (i<4){
-
+		// if (this.level === 1) {
+		// 	for (let i = 1; i <= 4; i++) {
+		// 		let texture = PIXI.Texture.fromFrame("forest-" + i);
+		// 		let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 160);
+		// 		tilingSprite.y = 200;
+		// 		if (i < 4) {
+		// 			this.forestStage.addChild(tilingSprite);
+		// 		} else {
+		// 			this.foregroundStage.addChild(tilingSprite);
+		// 		}
+		// 		this.backgroundArr.forest.push(tilingSprite);
+		// 	}
+		// } else if (this.level === 2) {
+		// 	//MOUNTAINS
+		// 	for (let i = 1; i <= 6; i++) {
+		// 		let texture = PIXI.Texture.fromFrame("mountain-" + i);
+		// 		let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 256);
+		// 		tilingSprite.y = 95;
+		// 		if (i < 5) {
+		// 			this.mountainStage.addChild(tilingSprite);
+		// 		} else {
+		// 			this.foregroundStage.addChild(tilingSprite);
+		// 		}
+		// 		this.backgroundArr.mountain.push(tilingSprite);
+		// 	}
+		// } else
+		if (this.level === 1) {
+			//Desert 1
+			for (let i = 1; i <= 5; i++) {
+				let texture = PIXI.Texture.fromFrame("desert1-" + i);
+				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1920, 1080);
+				tilingSprite.scale.y = 768 / 1080;
+				//	tilingSprite.y = -312;
+				if (i < 5) {
 					this.forestStage.addChild(tilingSprite);
-				}else {
-					this.foregroundStage.addChild(tilingSprite)
-
+				} else {
+					this.foregroundStage.addChild(tilingSprite);
 				}
 				this.backgroundArr.forest.push(tilingSprite);
 			}
-	
+		} else if (this.level === 2) {
+			//Desert 2
+			for (let i = 1; i <= 5; i++) {
+				let texture = PIXI.Texture.fromFrame("desert2-" + i);
+				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1920, 1080);
+				tilingSprite.y = 0;
+				tilingSprite.scale.y = 768 / 1080;
 
-		}else if (this.level ===2){
-
-		//MOUNTAINS
-		for (let i = 1; i <= 6; i++) {
-			let texture = PIXI.Texture.fromFrame("mountain-" + i);
-			let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 256);
-			tilingSprite.y = 95;
-			if(i<5){
-				this.mountainStage.addChild(tilingSprite);
-
-			} else{
-this.foregroundStage.addChild(tilingSprite)
+				if (i < 5) {
+					this.forestStage.addChild(tilingSprite);
+				} else {
+					this.foregroundStage.addChild(tilingSprite);
+				}
+				this.backgroundArr.forest.push(tilingSprite);
 			}
-					this.backgroundArr.mountain.push(tilingSprite);
+		} else if (this.level === 3) {
+			//Desert 3
+			for (let i = 1; i <= 5; i++) {
+				let texture = PIXI.Texture.fromFrame("desert3-" + i);
+				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1920, 1080);
+				tilingSprite.y = 0;
+				tilingSprite.scale.y = 768 / 1080;
+
+				if (i < 5) {
+					this.forestStage.addChild(tilingSprite);
+				} else {
+					this.foregroundStage.addChild(tilingSprite);
+				}
+				this.backgroundArr.forest.push(tilingSprite);
+			}
+		} else if (this.level === 4) {
+			//Desert 4
+			for (let i = 1; i <= 5; i++) {
+				let texture = PIXI.Texture.fromFrame("desert4-" + i);
+				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1920, 1080);
+				tilingSprite.y = 0;
+				tilingSprite.scale.y = 768 / 1080;
+
+				if (i < 5) {
+					this.forestStage.addChild(tilingSprite);
+				} else {
+					this.foregroundStage.addChild(tilingSprite);
+				}
+				this.backgroundArr.forest.push(tilingSprite);
+			}
 		}
-
-		} else if (this.level ===3){
-
-
-
-		}
-
 
 		// add objs to stage
+		this.backgroundStage.addChild(this.forestStage);
+		this.backgroundStage.addChild(this.mountainStage);
+		this.backgroundStage.addChild(this.cityStage);
+
 		for (let i in this.playerUnitArr) {
 			this.playerUnitArr[i].Sprite.idle.animationSpeed = 0.2;
 			this.playerUnitArr[i].Sprite.idle.play();
@@ -337,20 +738,38 @@ this.foregroundStage.addChild(tilingSprite)
 			this.unitStage.addChild(this.buildingArr[i].Sprite.idle);
 		}
 
-		this.backgroundStage.addChild(this.forestStage);
-		this.backgroundStage.addChild(this.mountainStage);
-		this.backgroundStage.addChild(this.cityStage);
-
 		this.stage.addChild(this.backgroundStage);
 		this.stage.addChild(this.unitStage);
-		console.log(this.stage);
 		this.stage.addChild(this.foregroundStage);
 
 		this.loadSystems();
 		this.allLoaded = true;
 	};
 
-	spawnUnits() {
+	advanceLevel() {
+		this.level++;
+		this.buildingArr = [];
+		this.playerUnitArr = [];
+		this.npcUnitArr = [];
+		console.log(this.stage);
+
+		this.forestStage.removeChildren();
+		this.mountainStage.removeChildren();
+		this.cityStage.removeChildren();
+		this.backgroundStage.removeChildren();
+		this.foregroundStage.removeChildren();
+		this.unitStage.removeChildren();
+		this.stage.removeChildren();
+		console.log(this.stage);
+
+		this.player.Position.x = 50;
+
+		this.generateLevel();
+		console.log(this.stage);
+	}
+
+	buyUnits(type) {
+		console.log(type)
 		let targetCamp;
 		for (let i in this.buildingArr) {
 			let distance = 1000000000000000;
@@ -362,13 +781,13 @@ this.foregroundStage.addChild(tilingSprite)
 				targetCamp = this.buildingArr[i];
 			}
 		}
-		if (targetCamp && this.player.Resources.food >= 10) {
+		if (targetCamp && this.player.Resources.food >= 10 && type =="boy") {
 			this.player.Resources.food -= 10;
 
 			let fren = new Entity();
 			let spawnPos = targetCamp.Position.x;
 
-			fren.addComponent(new Components.Position(spawnPos, 320));
+			fren.addComponent(new Components.Position(spawnPos, 590));
 			fren.addComponent(new Components.Weapon());
 			fren.addComponent(new Components.Size(32, 32));
 			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
@@ -382,10 +801,72 @@ this.foregroundStage.addChild(tilingSprite)
 			fren.addComponent(new Components.Faction("playerUnit"));
 			fren.addComponent(
 				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
+					new PIXI.extras.AnimatedSprite(this.spritesObj.boyIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.boyWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.boyAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.boyDeathFrames)
+				)
+			);
+			this.playerUnitArr.push(fren);
+			fren.Sprite.idle.animationSpeed = 0.2;
+			fren.Sprite.idle.play();
+			this.unitStage.addChild(fren.Sprite.idle);
+		}
+		if (targetCamp && this.player.Resources.food >= 25 && type =="gungirl") {
+			this.player.Resources.food -= 25;
+
+			let fren = new Entity();
+			let spawnPos = targetCamp.Position.x;
+
+			fren.addComponent(new Components.Position(spawnPos, 590));
+			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Size(32, 32));
+			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+
+			fren.addComponent(new Components.Stats());
+			fren.addComponent(
+				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+			);
+
+			fren.addComponent(new Components.Movement());
+			fren.addComponent(new Components.Faction("playerUnit"));
+			fren.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.gungirlIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.gungirlWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.gungirlAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.gungirlDeathFrames)
+				)
+			);
+			this.playerUnitArr.push(fren);
+			fren.Sprite.idle.animationSpeed = 0.2;
+			fren.Sprite.idle.play();
+			this.unitStage.addChild(fren.Sprite.idle);
+		}
+		if (targetCamp && this.player.Resources.food >= 40 && type =="knight") {
+			this.player.Resources.food -= 40;
+
+			let fren = new Entity();
+			let spawnPos = targetCamp.Position.x;
+
+			fren.addComponent(new Components.Position(spawnPos, 590));
+			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Size(32, 32));
+			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+
+			fren.addComponent(new Components.Stats());
+			fren.addComponent(
+				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+			);
+
+			fren.addComponent(new Components.Movement());
+			fren.addComponent(new Components.Faction("playerUnit"));
+			fren.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.knightIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.knightWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.knightAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.knightDeathFrames)
 				)
 			);
 			this.playerUnitArr.push(fren);
@@ -418,6 +899,14 @@ this.foregroundStage.addChild(tilingSprite)
 				food: this.player.Resources.food
 			});
 		}
+
+		//CHECK WIN/LOSE CONDItION
+		if (this.player.Stats.health <= 0) {
+			console.log("u lose");
+		} else if (this.player.Position.x > 4900) {
+			console.log("u win");
+			this.advanceLevel();
+		}
 	}
 
 	render() {
@@ -429,7 +918,7 @@ this.foregroundStage.addChild(tilingSprite)
 	guiUpdater() {}
 
 	mainLoop = () => {
-		if (this.allLoaded) {
+		if (this.allLoaded && !this.pause) {
 			// set up RAF
 			let newTime = Date.now();
 			let dt = newTime - this.oldTime;

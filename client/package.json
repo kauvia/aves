@@ -26,9 +26,9 @@
   ],
   "main": "index.html",
   "window": {
-    "fullscreen": false,
-    "height": 600,
-    "width": 1200
+    "fullscreen": true,
+    "height": 768,
+    "width": 1366
   },
   "nwBuilder": {
     "//": "https://github.com/nwjs-community/nw-builder",
