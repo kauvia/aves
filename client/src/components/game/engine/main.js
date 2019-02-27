@@ -53,13 +53,18 @@ class Engine {
 		this.unitStage = new PIXI.Container();
 		this.foregroundStage = new PIXI.Container();
 
+		this.zombieInvasion = false;
+
 		this.loader = new PIXI.loaders.Loader();
 		this.keyboardKeys = {};
+
+		this.buyUnitAudio = new Audio("assets/sounds/UI_Quirky1.mp3");
+		this.nextLevelAudio = new Audio("assets/sounds/PowerUp1.mp3");
+		this.bgAudio = new Audio("assets/sounds/Level1.mp3");
 	}
 
 	initialize() {
 		console.log("initializing");
-
 		this.rendererContainer = document.getElementById("game-container");
 		this.rendererContainer.appendChild(this.renderer.view);
 
@@ -69,7 +74,7 @@ class Engine {
 	loadSystems() {
 		this.camera = new Entity();
 		this.camera.addComponent(new Components.Position(400, 300));
-		this.camera.addComponent(new Components.Velocity());
+		this.camera.addComponent(new Components.Velocity(4));
 
 		this.RenderSys = new RenderSys(
 			this.playerUnitArr,
@@ -544,6 +549,7 @@ class Engine {
 	};
 
 	generateLevel = () => {
+		this.bgAudio.play();
 		// for (let i = 0; i < 10; i++) {
 		// 	let spawnPos = i * 2000;
 		// 	let building = new Entity();
@@ -650,7 +656,7 @@ class Engine {
 		}
 		//	spawn Enemy
 		for (let i = 0; i < 2; i++) {
-			for (let j = 0; j < this.level+2; j++) {
+			for (let j = 0; j < this.level + 2; j++) {
 				let skelly = new Entity();
 				let spawnPos = Math.random() * 100 + 1600 + 2000 * i;
 
@@ -659,7 +665,7 @@ class Engine {
 				skelly.addComponent(new Components.Size(32, 32));
 				skelly.addComponent(new Components.Velocity(5));
 
-				skelly.addComponent(new Components.Stats(100*this.level));
+				skelly.addComponent(new Components.Stats(100 * this.level));
 				skelly.addComponent(new Components.Behaviour(spawnPos));
 
 				skelly.addComponent(new Components.Movement());
@@ -797,6 +803,9 @@ class Engine {
 				this.backgroundArr.forest.push(tilingSprite);
 			}
 		} else if (this.level === 2) {
+			this.bgAudio.src = "assets/sounds/Level2.mp3";
+			this.bgAudio.currentTime = 0;
+			this.bgAudio.play();
 			//Desert 2
 			for (let i = 1; i <= 5; i++) {
 				let texture = PIXI.Texture.fromFrame("desert2-" + i);
@@ -813,6 +822,9 @@ class Engine {
 			}
 		} else if (this.level === 3) {
 			//Desert 3
+			this.bgAudio.src = "assets/sounds/Level3.mp3";
+			this.bgAudio.currentTime = 0;
+			this.bgAudio.play();
 			for (let i = 1; i <= 5; i++) {
 				let texture = PIXI.Texture.fromFrame("desert3-" + i);
 				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1920, 1080);
@@ -827,6 +839,9 @@ class Engine {
 				this.backgroundArr.forest.push(tilingSprite);
 			}
 		} else if (this.level === 4) {
+			this.bgAudio.src = "assets/sounds/Level4.mp3";
+			this.bgAudio.currentTime = 0;
+			this.bgAudio.play();
 			//Desert 4
 			for (let i = 1; i <= 5; i++) {
 				let texture = PIXI.Texture.fromFrame("desert4-" + i);
@@ -889,6 +904,12 @@ class Engine {
 		this.stage.removeChildren();
 		console.log(this.stage);
 
+		for (let i = this.playerUnitArr.length-1;i>=0;i--){
+			if(this.playerUnitArr[i].Stats.health<=0){
+				this.playerUnitArr.splice(i,1)
+			}
+		}
+
 		for (let i in this.playerUnitArr) {
 			this.playerUnitArr[i].Position.x = Math.random() * 50;
 		}
@@ -940,6 +961,8 @@ class Engine {
 			fren.Sprite.idle.animationSpeed = 0.2;
 			fren.Sprite.idle.play();
 			this.unitStage.addChild(fren.Sprite.idle);
+			this.buyUnitAudio.currentTime = 0;
+			this.buyUnitAudio.play();
 		}
 		if (targetCamp && this.player.Resources.food >= 25 && type == "gungirl") {
 			this.player.Resources.food -= 25;
@@ -971,6 +994,8 @@ class Engine {
 			fren.Sprite.idle.animationSpeed = 0.2;
 			fren.Sprite.idle.play();
 			this.unitStage.addChild(fren.Sprite.idle);
+			this.buyUnitAudio.currentTime = 0;
+			this.buyUnitAudio.play();
 		}
 		if (targetCamp && this.player.Resources.food >= 50 && type == "knight") {
 			this.player.Resources.food -= 50;
@@ -1002,9 +1027,90 @@ class Engine {
 			fren.Sprite.idle.animationSpeed = 0.2;
 			fren.Sprite.idle.play();
 			this.unitStage.addChild(fren.Sprite.idle);
+			this.buyUnitAudio.currentTime = 0;
+			this.buyUnitAudio.play();
+		}
+	}
+	zombieInvasionSys() {
+		if (this.player.Position.x > 2500 && !this.zombieInvasion) {
+			this.zombieInvasion = true;
+			this.spawnedZombies = false;
+		}
+		if (!this.spawnedZombies && this.zombieInvasion) {
+			this.spawnZombies();
+		}
+		if (this.spawnedZombies && this.zombieInvasion) {
+			for (let i = this.nonzombieNum - 1; i < this.npcUnitArr.length; i++) 
+			{
+				this.npcUnitArr[i].Behaviour.spawnPoint+=this.npcUnitArr[i].Velocity.x
+			}
+		}
+	}
+	spawnZombies() {
+		this.nonzombieNum = this.npcUnitArr.length;
+		this.spawnedZombies = true;
+		let playerNum = this.playerUnitArr.length;
+
+		for (let i = 0; i < playerNum * 3; i++) {
+			let zombie = new Entity();
+			let spawnPos = ranN(200);
+
+			zombie.addComponent(new Components.Position(spawnPos, 585+ranN(10)));
+			zombie.addComponent(new Components.Weapon("fist", "melee", 15, 10));
+			zombie.addComponent(new Components.Size(32, 32));
+			zombie.addComponent(new Components.Velocity(2));
+
+			zombie.addComponent(new Components.Stats(200));
+			zombie.addComponent(
+				new Components.Behaviour(spawnPos, 5000, 300, Math.random() * 50)
+			);
+
+			zombie.addComponent(new Components.Movement());
+			zombie.addComponent(new Components.Faction("enemy"));
+			let rand = Math.random();
+			if (rand < 0.5) {
+				zombie.addComponent(
+					new Components.Sprite(
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiefemaleIdleFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiefemaleWalkFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiefemaleAttackFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiefemaleDeathFrames
+						)
+					)
+				);
+			} else {
+				zombie.addComponent(
+					new Components.Sprite(
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleIdleFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleWalkFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleAttackFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleDeathFrames
+						)
+					)
+				);
+			}
+
+			this.npcUnitArr.push(zombie);
+			zombie.Sprite.idle.animationSpeed = 0.2;
+			zombie.Sprite.idle.play();
 		}
 	}
 	update(dt) {
+		this.zombieInvasionSys();
 		//	console.log(this.stage)
 		//Trottle interation updates
 		this.KeyboardListenerSys.inputListener();
@@ -1035,6 +1141,8 @@ class Engine {
 		} else if (this.player.Position.x > 4900) {
 			console.log("u win");
 			this.advanceLevel();
+			this.nextLevelAudio.currentTime = 0;
+			this.nextLevelAudio.play();
 		}
 	}
 
@@ -1047,6 +1155,11 @@ class Engine {
 	guiUpdater() {}
 
 	mainLoop = () => {
+		//reset music loop
+		if (this.bgAudio.currentTime == this.bgAudio.duration) {
+			this.bgAudio.currentTime = 0;
+		}
+
 		if (this.allLoaded && !this.pause) {
 			// set up RAF
 			let newTime = Date.now();

@@ -1,20 +1,55 @@
+const ranN = num => Math.floor(Math.random() * num); //return random number from 0-num
+
 class AISys {
 	constructor(playerUnitArr, npcUnitArr, player) {
 		this.player = player;
 		this.playerUnitArr = playerUnitArr;
 		this.npcUnitArr = npcUnitArr;
 		this.factionPos = {};
-	}
 
+		this.sounds = [
+			new Audio("assets/sounds/battle/Clank_1.mp3"),
+			new Audio("assets/sounds/battle/Clank_2.mp3"),
+			new Audio("assets/sounds/battle/Clank_3.mp3"),
+			new Audio("assets/sounds/battle/Clank_4.mp3"),
+			new Audio("assets/sounds/battle/Clank_5.mp3"),
+			new Audio("assets/sounds/battle/Clank_6.mp3"),
+			new Audio("assets/sounds/battle/Clank_7.mp3"),
+			new Audio("assets/sounds/battle/Clank_8.mp3"),
+			new Audio("assets/sounds/battle/Clank_9.mp3"),
+			new Audio("assets/sounds/battle/Clank_10.mp3"),
+			new Audio("assets/sounds/battle/gun1.wav"),
+			new Audio("assets/sounds/battle/death1.wav")
+		];
+	}
+	playSound(type) {
+		if (type == "gun") {
+			this.sounds[10].currentTime = 0;
+			this.sounds[10].play();
+		} else if (type == "death"){
+			this.sounds[11].currentTime = 0;
+			this.sounds[11].play();
+		}else {
+			let rand = ranN(9);
+			this.sounds[rand].currentTime = 0;
+			this.sounds[rand].play();
+		}
+	}
 	update(dt) {
 		for (let i in this.npcUnitArr) {
 			this.updateNpcUnit(dt, i);
 		}
 		for (let i in this.playerUnitArr) {
-			if (this.playerUnitArr[i].Faction.belongsTo == "playerUnit" && this.playerUnitArr[i].Stats.health>0) {
+			if (
+				this.playerUnitArr[i].Faction.belongsTo == "playerUnit" &&
+				this.playerUnitArr[i].Stats.health > 0
+			) {
 				this.updatePlayerUnit(dt, i);
-			} else if (this.playerUnitArr[i].Faction.belongsTo == "playerUnit" && this.playerUnitArr[i].Stats.health<=0){
-				this.playerUnitArr[i].Movement.idle=true;
+			} else if (
+				this.playerUnitArr[i].Faction.belongsTo == "playerUnit" &&
+				this.playerUnitArr[i].Stats.health <= 0
+			) {
+				this.playerUnitArr[i].Movement.idle = true;
 			}
 		}
 	}
@@ -49,24 +84,22 @@ class AISys {
 		let distance = 100000;
 		let target = null;
 		for (let j in this.npcUnitArr) {
-			let temp = Math.abs(
-				this.npcUnitArr[j].Position.x - unit.Position.x
-			);
+			let temp = Math.abs(this.npcUnitArr[j].Position.x - unit.Position.x);
 			if (temp < distance && this.npcUnitArr[j].Stats.health > 0) {
 				distance = temp;
 				target = this.npcUnitArr[j];
 			}
 		}
-		if(target){
-
+		if (target) {
 			let distanceFromTarget = unit.Position.x - target.Position.x;
 			let targetDirection;
 			distanceFromTarget <= 0
 				? (targetDirection = "right")
 				: (targetDirection = "left");
-	
+
 			if (
-				Math.abs(distanceFromTarget) > unit.Size.width / 2 + unit.Weapon.range &&
+				Math.abs(distanceFromTarget) >
+					unit.Size.width / 2 + unit.Weapon.range &&
 				!unit.Movement.attacking
 			) {
 				unit.Movement.idle = false;
@@ -77,15 +110,19 @@ class AISys {
 				//			console.log(unit.Weapon.tick)
 				unit.Movement.attacking = true;
 				if (!unit.Movement.prevAttacking) {
+					this.playSound(unit.Weapon.weaponName);
 					target.Stats.health -= unit.Weapon.damage;
-					if (target.Stats.health<=0){
-						this.player.Resources.food +=20
+					if (target.Stats.health <= 0) {
+						this.player.Resources.food += 20;
+						this.playSound("death")
 					}
 
 					//			console.log(target.Stats.health)
 				}
 			}
-		} else {this.followPlayer(dt,i)}
+		} else {
+			this.followPlayer(dt, i);
+		}
 	}
 	defendPlayer(dt, i) {
 		let unit = this.playerUnitArr[i];
@@ -93,24 +130,22 @@ class AISys {
 		let distance = 100000;
 		let target = null;
 		for (let j in this.npcUnitArr) {
-			let temp = Math.abs(
-				this.npcUnitArr[j].Position.x - unit.Position.x
-			);
+			let temp = Math.abs(this.npcUnitArr[j].Position.x - unit.Position.x);
 			if (temp < distance && this.npcUnitArr[j].Stats.health > 0) {
 				distance = temp;
 				target = this.npcUnitArr[j];
 			}
 		}
-		if(target && distance<unit.Behaviour.attackRange){
-
+		if (target && distance < unit.Behaviour.attackRange) {
 			let distanceFromTarget = unit.Position.x - target.Position.x;
 			let targetDirection;
 			distanceFromTarget <= 0
 				? (targetDirection = "right")
 				: (targetDirection = "left");
-	
+
 			if (
-				Math.abs(distanceFromTarget) > unit.Size.width / 2 + unit.Weapon.range &&
+				Math.abs(distanceFromTarget) >
+					unit.Size.width / 2 + unit.Weapon.range &&
 				!unit.Movement.attacking
 			) {
 				unit.Movement.idle = false;
@@ -121,14 +156,20 @@ class AISys {
 				//			console.log(unit.Weapon.tick)
 				unit.Movement.attacking = true;
 				if (!unit.Movement.prevAttacking) {
+					this.playSound(unit.Weapon.weaponName);
+
 					target.Stats.health -= unit.Weapon.damage;
-					if (target.Stats.health<=0){
-						this.player.Resources.food +=20
+					if (target.Stats.health <= 0) {
+						this.playSound("death")
+
+						this.player.Resources.food += 20;
 					}
 					//			console.log(target.Stats.health)
 				}
 			}
-		} else {this.followPlayer(dt,i)}
+		} else {
+			this.followPlayer(dt, i);
+		}
 	}
 	holdPosition(dt, i) {
 		let unit = this.playerUnitArr[i];
@@ -141,7 +182,6 @@ class AISys {
 			unit.Movement.direction = direction;
 		} else {
 			unit.Movement.idle = true;
-			
 		}
 	}
 
@@ -191,7 +231,11 @@ class AISys {
 			//			console.log(unit.Weapon.tick)
 			unit.Movement.attacking = true;
 			if (!unit.Movement.prevAttacking) {
+				this.playSound();
 				target.Stats.health -= unit.Weapon.damage;
+				if (target.Stats.health <= 0) {
+					this.playSound("death")
+				}
 				//			console.log(target.Stats.health)
 			}
 		}

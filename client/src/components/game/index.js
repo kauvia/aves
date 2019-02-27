@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Engine from "./engine/main";
 import GameCanvas from "./canvas";
 import GameGui from "./gui";
+
 class GameScreen extends Component {
 	constructor(props) {
 		super(props);
