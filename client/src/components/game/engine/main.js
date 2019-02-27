@@ -650,7 +650,6 @@ class Engine {
 						)
 					);
 				}
-				console.log(animal);
 				this.npcUnitArr.push(animal);
 			}
 		}
@@ -1053,7 +1052,7 @@ class Engine {
 
 		for (let i = 0; i < playerNum * 3; i++) {
 			let zombie = new Entity();
-			let spawnPos = ranN(200);
+			let spawnPos = ranN(200)+10;
 
 			zombie.addComponent(new Components.Position(spawnPos, 585+ranN(10)));
 			zombie.addComponent(new Components.Weapon("fist", "melee", 15, 10));

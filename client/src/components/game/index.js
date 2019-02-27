@@ -7,9 +7,9 @@ class GameScreen extends Component {
 	constructor(props) {
 		super(props);
 		this.engine = new Engine(1366, 768);
-		this.state = { test: 0 };
+		this.state = { test: 0, gameStarted: false };
 	}
-	componentDidMount() {
+	startGameEngine() {
 		this.engine.initialize();
 		this.engine.runLoop();
 		this.engine.guiUpdater = data => {
@@ -19,10 +19,21 @@ class GameScreen extends Component {
 		this.engine.guiObjects = data => {
 			//		console.log(data)
 		};
+		//		this.setState({gameStarted:true})
 	}
+	componentDidMount(){
+		this.props.themeMusic.pause()
+		this.startGameEngine()
+	}
+	// componentDidUpdate(){
+	// 	console.log(this.props)
+	// 	if(this.props.gameStarted && !this.state.gameStarted){
+	// 		this.startGameEngine()
+	// 	}
 
+	// }
 	guiListener = e => {
-		this.engine.buyUnits(e.target.dataset.id)
+		this.engine.buyUnits(e.target.dataset.id);
 	};
 
 	render() {

@@ -4,13 +4,21 @@ import StartScreen from "./components/startscreen";
 import GameScreen from "./components/game";
 class App extends Component {
 	constructor(props) {
-    super(props);
-    // for prod
-//	this.state = {display:{StartScreen:"block",GameScreen:"none"}};
-    // for testing game
-		this.state = {display:{StartScreen:"none",GameScreen:"block"}};
-
-}
+		super(props);
+		// for prod
+		this.state = {
+			display: { StartScreen: "block", GameScreen: "none" },
+			gameStarted: false, themeMusic:new Audio("assets/sounds/MainTheme.mp3")
+		};
+		// for testing game
+		// this.state = {
+		// 	display: { StartScreen: "none", GameScreen: "block" },
+		// 	gameStarted: false
+		// };
+	}
+	componentDidMount(){
+		this.state.themeMusic.play()
+	}
 	handleStartMenu = e => {
 		let selection = e.target.dataset.id;
 		switch (selection) {
@@ -32,17 +40,27 @@ class App extends Component {
 				}
 				break;
 		}
-  };
-  startGame(){
-    this.setState(prevState=>({display:{...prevState,StartScreen:"none",GameScreen:"block"}}))
-  }
-
+	};
+	startGame() {
+		this.setState(prevState => ({
+			display: { ...prevState, StartScreen: "none", GameScreen: "block" },
+			gameStarted: true
+		}));
+	}
 	render() {
-    
 		return (
 			<div className="App">
-        <GameScreen display={this.state.display.GameScreen}/>
-				<StartScreen handleStartMenu={this.handleStartMenu} display={this.state.display.StartScreen}/>
+				{this.state.gameStarted && (
+					<GameScreen
+						display={this.state.display.GameScreen}
+						gameStarted={this.state.gameStarted}
+						themeMusic={this.state.themeMusic}
+					/>
+				)}
+				<StartScreen
+					handleStartMenu={this.handleStartMenu}
+					display={this.state.display.StartScreen}
+				/>
 			</div>
 		);
 	}
