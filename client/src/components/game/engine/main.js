@@ -616,7 +616,7 @@ class Engine {
 				animal.addComponent(new Components.Faction("animal"));
 				let rand = Math.random();
 				if (rand < 0.1) {
-					animal.Weapon.damage=25;
+					animal.Weapon.damage = 25;
 					animal.addComponent(
 						new Components.Sprite(
 							new PIXI.extras.AnimatedSprite(this.spritesObj.dinoIdleFrames),
@@ -644,42 +644,141 @@ class Engine {
 						)
 					);
 				}
-				console.log(animal)
+				console.log(animal);
 				this.npcUnitArr.push(animal);
 			}
 		}
 		//	spawn Enemy
 		for (let i = 0; i < 2; i++) {
-			for (let j = 0; j < 3; j++) {
+			for (let j = 0; j < this.level+2; j++) {
 				let skelly = new Entity();
 				let spawnPos = Math.random() * 100 + 1600 + 2000 * i;
 
 				skelly.addComponent(new Components.Position(spawnPos, 590));
 				skelly.addComponent(new Components.Weapon("pikeaxe", "melee", 20, 25));
 				skelly.addComponent(new Components.Size(32, 32));
-				skelly.addComponent(new Components.Velocity(Math.random() * 1 + 1));
+				skelly.addComponent(new Components.Velocity(5));
 
-				skelly.addComponent(new Components.Stats());
+				skelly.addComponent(new Components.Stats(100*this.level));
 				skelly.addComponent(new Components.Behaviour(spawnPos));
 
 				skelly.addComponent(new Components.Movement());
 				skelly.addComponent(new Components.Faction("enemy"));
-				skelly.addComponent(
-					new Components.Sprite(
-						new PIXI.extras.AnimatedSprite(
-							this.spritesObj.zombiemaleIdleFrames
-						),
-						new PIXI.extras.AnimatedSprite(
-							this.spritesObj.zombiemaleWalkFrames
-						),
-						new PIXI.extras.AnimatedSprite(
-							this.spritesObj.zombiemaleAttackFrames
-						),
-						new PIXI.extras.AnimatedSprite(
-							this.spritesObj.zombiemaleDeathFrames
+				if (this.level == 1) {
+					skelly.addComponent(
+						new Components.Sprite(
+							new PIXI.extras.AnimatedSprite(this.spritesObj.jackIdleFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.jackWalkFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.jackAttackFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.jackDeathFrames)
 						)
-					)
-				);
+					);
+				} else if (this.level == 2) {
+					let rand = Math.random();
+					if (rand < 0.5) {
+						skelly.addComponent(
+							new Components.Sprite(
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanIdleFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanWalkFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanAttackFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanDeathFrames
+								)
+							)
+						);
+					} else {
+						skelly.addComponent(
+							new Components.Sprite(
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlIdleFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlWalkFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlAttackFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlDeathFrames
+								)
+							)
+						);
+					}
+				} else if (this.level == 3) {
+					skelly.addComponent(
+						new Components.Sprite(
+							new PIXI.extras.AnimatedSprite(this.spritesObj.robotIdleFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.robotWalkFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.robotAttackFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.robotDeathFrames)
+						)
+					);
+				} else {
+					let rand = Math.random();
+					if (rand < 0.25) {
+						skelly.addComponent(
+							new Components.Sprite(
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanIdleFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanWalkFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanAttackFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjamanDeathFrames
+								)
+							)
+						);
+					} else if (rand < 0.5) {
+						skelly.addComponent(
+							new Components.Sprite(
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlIdleFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlWalkFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlAttackFrames
+								),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.ninjagirlDeathFrames
+								)
+							)
+						);
+					} else if (rand < 0.75) {
+						skelly.addComponent(
+							new Components.Sprite(
+								new PIXI.extras.AnimatedSprite(this.spritesObj.robotIdleFrames),
+								new PIXI.extras.AnimatedSprite(this.spritesObj.robotWalkFrames),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.robotAttackFrames
+								),
+								new PIXI.extras.AnimatedSprite(this.spritesObj.robotDeathFrames)
+							)
+						);
+					} else {
+						skelly.addComponent(
+							new Components.Sprite(
+								new PIXI.extras.AnimatedSprite(this.spritesObj.jackIdleFrames),
+								new PIXI.extras.AnimatedSprite(this.spritesObj.jackWalkFrames),
+								new PIXI.extras.AnimatedSprite(
+									this.spritesObj.jackAttackFrames
+								),
+								new PIXI.extras.AnimatedSprite(this.spritesObj.jackDeathFrames)
+							)
+						);
+					}
+				}
 				this.npcUnitArr.push(skelly);
 			}
 		}
@@ -800,7 +899,6 @@ class Engine {
 	}
 
 	buyUnits(type) {
-		console.log(type);
 		let targetCamp;
 		for (let i in this.buildingArr) {
 			let distance = 1000000000000000;
@@ -819,13 +917,13 @@ class Engine {
 			let spawnPos = targetCamp.Position.x;
 
 			fren.addComponent(new Components.Position(spawnPos, 590));
-			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Weapon("fist", "melee", 10, 10));
 			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+			fren.addComponent(new Components.Velocity(5));
 
 			fren.addComponent(new Components.Stats());
 			fren.addComponent(
-				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+				new Components.Behaviour(spawnPos, 1000, 300, 25 + Math.random() * 50)
 			);
 
 			fren.addComponent(new Components.Movement());
@@ -850,13 +948,13 @@ class Engine {
 			let spawnPos = targetCamp.Position.x;
 
 			fren.addComponent(new Components.Position(spawnPos, 590));
-			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Weapon("gun", "range", 150, 5));
 			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+			fren.addComponent(new Components.Velocity(4));
 
-			fren.addComponent(new Components.Stats());
+			fren.addComponent(new Components.Stats(50));
 			fren.addComponent(
-				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+				new Components.Behaviour(spawnPos, 1000, 300, 125 + Math.random() * 50)
 			);
 
 			fren.addComponent(new Components.Movement());
@@ -874,20 +972,20 @@ class Engine {
 			fren.Sprite.idle.play();
 			this.unitStage.addChild(fren.Sprite.idle);
 		}
-		if (targetCamp && this.player.Resources.food >= 40 && type == "knight") {
-			this.player.Resources.food -= 40;
+		if (targetCamp && this.player.Resources.food >= 50 && type == "knight") {
+			this.player.Resources.food -= 50;
 
 			let fren = new Entity();
 			let spawnPos = targetCamp.Position.x;
 
 			fren.addComponent(new Components.Position(spawnPos, 590));
-			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Weapon("sword", "melee", 15, 20));
 			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+			fren.addComponent(new Components.Velocity(3));
 
-			fren.addComponent(new Components.Stats());
+			fren.addComponent(new Components.Stats(200));
 			fren.addComponent(
-				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+				new Components.Behaviour(spawnPos, 1000, 300, Math.random() * 50)
 			);
 
 			fren.addComponent(new Components.Movement());
