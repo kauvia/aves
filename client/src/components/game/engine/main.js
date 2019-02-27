@@ -38,6 +38,8 @@ class Engine {
 
 		this.spritesObj = {};
 
+		this.level = 1;
+
 		this.camera = null;
 		this.player = null;
 
@@ -109,12 +111,12 @@ class Engine {
 
 			.add("../assets/campfire.json")
 
-			.add("building-01","../assets/building-01.png")
+			.add("building-01", "../assets/building-01.png")
 
-			.add("forest-back-trees", "../assets/parallax-forest-back-trees.png")
-			.add("forest-lights", "../assets/parallax-forest-lights.png")
-			.add("forest-middle-trees", "../assets/parallax-forest-middle-trees.png")
-			.add("forest-front-trees", "../assets/parallax-forest-front-trees.png")
+			.add("forest-1", "../assets/parallax-forest-back-trees.png")
+			.add("forest-2", "../assets/parallax-forest-lights.png")
+			.add("forest-3", "../assets/parallax-forest-middle-trees.png")
+			.add("forest-4", "../assets/parallax-forest-front-trees.png")
 
 			.add("mountain-1", "../assets/Hills-Layer-01.png")
 			.add("mountain-2", "../assets/Hills-Layer-02.png")
@@ -124,66 +126,6 @@ class Engine {
 			.add("mountain-6", "../assets/Hills-Layer-06.png")
 
 			.load(this.onAssetLoaded);
-
-		// //ADDING BACKGGROUND
-		let backTreesTexture = PIXI.Texture.fromImage(
-			"../assets/parallax-forest-back-trees.png"
-		);
-		this.tilingBackTreesSprite = new PIXI.extras.TilingSprite(
-			backTreesTexture,
-			1200,
-			160
-		);
-		//	this.tilingBackTreesSprite.scale.set(1.5, 1.5);
-		this.tilingBackTreesSprite.y = 200;
-
-		let lightingTexture = PIXI.Texture.fromImage(
-			"../assets/parallax-forest-lights.png"
-		);
-		this.tilingLightSprite = new PIXI.extras.TilingSprite(
-			lightingTexture,
-			1200,
-			160
-		);
-		//	this.tilingLightSprite.scale.set(1.5, 1.5);
-		this.tilingLightSprite.y = 200;
-
-		let midTreesTexture = PIXI.Texture.fromImage(
-			"../assets/parallax-forest-middle-trees.png"
-		);
-		this.tilingMidTreesSprite = new PIXI.extras.TilingSprite(
-			midTreesTexture,
-			1200,
-			160
-		);
-		//	this.tilingMidTreesSprite.scale.set(1.5, 1.5);
-		this.tilingMidTreesSprite.y = 200;
-
-		let frontTreesTexture = PIXI.Texture.fromImage(
-			"../assets/parallax-forest-front-trees.png"
-		);
-		this.tilingFrontTreesSprite = new PIXI.extras.TilingSprite(
-			frontTreesTexture,
-			1200,
-			160
-		);
-		//	this.tilingFrontTreesSprite.scale.set(1.5, 1.5);
-		this.tilingFrontTreesSprite.y = 200;
-
-		this.backgroundArr.forest.push(this.tilingBackTreesSprite);
-		this.backgroundArr.forest.push(this.tilingLightSprite);
-		this.backgroundArr.forest.push(this.tilingMidTreesSprite);
-		this.backgroundArr.forest.push(this.tilingFrontTreesSprite);
-
-		//ADDING PLAYERS AND OBJS
-
-		this.forestStage.addChild(this.tilingBackTreesSprite);
-
-		this.forestStage.addChild(this.tilingLightSprite);
-
-		this.forestStage.addChild(this.tilingMidTreesSprite);
-
-			this.foregroundStage.addChild(this.tilingFrontTreesSprite);
 	}
 
 	onAssetLoaded = () => {
@@ -250,83 +192,29 @@ class Engine {
 			);
 		}
 
-		//MOUNTAINS
-		for (let i = 1; i <= 6; i++) {
-			let texture = PIXI.Texture.fromFrame("mountain-" + i);
-			let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 256);
-			tilingSprite.y = 104;
-		//	this.mountainStage.addChild(tilingSprite);
-	//		this.backgroundArr.mountain.push(tilingSprite);
-		}
-		console.log(this.mountainStage);
 
-		this.loadEntities();
+		this.generateLevel();
 	};
-	spawnUnits() {
-		let targetCamp;
-		for (let i in this.buildingArr) {
-			let distance = 1000000000000000;
-			let tempD = Math.abs(
-				this.player.Position.x - this.buildingArr[i].Position.x
-			);
-			if (tempD < distance && tempD < 200) {
-				distance = tempD;
-				targetCamp = this.buildingArr[i];
-			}
-		}
-		if (targetCamp && this.player.Resources.food>=10) {
-			this.player.Resources.food -= 10;
-			
-			let fren = new Entity();
-			let spawnPos = targetCamp.Position.x;
 
-			fren.addComponent(new Components.Position(spawnPos, 320));
-			fren.addComponent(new Components.Weapon());
-			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
-
-			fren.addComponent(new Components.Stats());
-			fren.addComponent(
-				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
-			);
-
-			fren.addComponent(new Components.Movement());
-			fren.addComponent(new Components.Faction("playerUnit"));
-			fren.addComponent(
-				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
-				)
-			);
-			this.playerUnitArr.push(fren);
-			fren.Sprite.idle.animationSpeed = 0.2;
-			fren.Sprite.idle.play();
-			this.unitStage.addChild(fren.Sprite.idle);
-		}
-	}
-
-	loadEntities = () => {
-		
-		for (let i = 0; i < 10; i++) {
-			let spawnPos = i * 2000;
-			let building = new Entity();
-			building.addComponent(new Components.Position(spawnPos, 305));
-			building.addComponent(new Components.Size(32, 32));
-			building.addComponent(new Components.Faction("player"));
-			building.addComponent(
-				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(PIXI.Texture.fromFrame("building-01"))
-				)
-			);
-			this.buildingArr.push(building);
-		}
+	generateLevel = () => {
+		// for (let i = 0; i < 10; i++) {
+		// 	let spawnPos = i * 2000;
+		// 	let building = new Entity();
+		// 	building.addComponent(new Components.Position(spawnPos, 305));
+		// 	building.addComponent(new Components.Size(32, 32));
+		// 	building.addComponent(new Components.Faction("player"));
+		// 	building.addComponent(
+		// 		new Components.Sprite(
+		// 			new PIXI.extras.AnimatedSprite(PIXI.Texture.fromFrame("building-01"))
+		// 		)
+		// 	);
+		// 	this.buildingArr.push(building);
+		// }
 
 
-
-		for (let i = 0; i < 10; i++) {
-			let spawnPos = i * 2000;
+		//spawn camp(base)
+		for (let i = 0; i < 2; i++) {
+			let spawnPos = i * 2800+100;
 			let campfire = new Entity();
 			campfire.addComponent(new Components.Position(spawnPos, 305));
 			campfire.addComponent(new Components.Size(32, 32));
@@ -339,6 +227,7 @@ class Engine {
 			this.buildingArr.push(campfire);
 		}
 
+		//spawn Player
 		this.player = new Entity();
 		this.player.addComponent(new Components.Position(20, 320));
 		this.player.addComponent(new Components.Weapon());
@@ -361,31 +250,7 @@ class Engine {
 		);
 		this.playerUnitArr.push(this.player);
 
-		let pen = new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames);
-		for (let i = 0; i < 10; i++) {
-			let fren = new Entity();
-			let spawnPos = Math.random() * 500;
-
-			fren.addComponent(new Components.Position(spawnPos, 320));
-			fren.addComponent(new Components.Weapon());
-			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
-
-			fren.addComponent(new Components.Stats());
-			fren.addComponent(new Components.Behaviour(spawnPos));
-
-			fren.addComponent(new Components.Movement());
-			fren.addComponent(new Components.Faction("humanUnit"));
-			fren.addComponent(
-				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
-				)
-			);
-			//		this.npcUnitArr.push(fren);
-		}
+		//spawn Enemy
 		for (let i = 0; i < 2; i++) {
 			let skelly = new Entity();
 			let spawnPos = Math.random() * 500;
@@ -412,32 +277,47 @@ class Engine {
 			this.npcUnitArr.push(skelly);
 		}
 
-		for (let i = 0; i < 2; i++) {
-			let fren = new Entity();
-			let spawnPos = Math.random() * 200;
 
-			fren.addComponent(new Components.Position(spawnPos, 320));
-			fren.addComponent(new Components.Weapon());
-			fren.addComponent(new Components.Size(32, 32));
-			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+		//Setup Background
+		//Forests
+		if (this.level === 1){
+			for (let i = 1; i <= 4; i++) {
+				let texture = PIXI.Texture.fromFrame("forest-" + i);
+				let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 160);
+				tilingSprite.y = 200;
+				if (i<4){
 
-			fren.addComponent(new Components.Stats());
-			fren.addComponent(
-				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
-			);
+					this.forestStage.addChild(tilingSprite);
+				}else {
+					this.foregroundStage.addChild(tilingSprite)
 
-			fren.addComponent(new Components.Movement());
-			fren.addComponent(new Components.Faction("playerUnit"));
-			fren.addComponent(
-				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
-				)
-			);
-			this.playerUnitArr.push(fren);
+				}
+				this.backgroundArr.forest.push(tilingSprite);
+			}
+	
+
+		}else if (this.level ===2){
+
+		//MOUNTAINS
+		for (let i = 1; i <= 6; i++) {
+			let texture = PIXI.Texture.fromFrame("mountain-" + i);
+			let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 256);
+			tilingSprite.y = 95;
+			if(i<5){
+				this.mountainStage.addChild(tilingSprite);
+
+			} else{
+this.foregroundStage.addChild(tilingSprite)
+			}
+					this.backgroundArr.mountain.push(tilingSprite);
 		}
+
+		} else if (this.level ===3){
+
+
+
+		}
+
 
 		// add objs to stage
 		for (let i in this.playerUnitArr) {
@@ -469,6 +349,51 @@ class Engine {
 		this.loadSystems();
 		this.allLoaded = true;
 	};
+
+	spawnUnits() {
+		let targetCamp;
+		for (let i in this.buildingArr) {
+			let distance = 1000000000000000;
+			let tempD = Math.abs(
+				this.player.Position.x - this.buildingArr[i].Position.x
+			);
+			if (tempD < distance && tempD < 200) {
+				distance = tempD;
+				targetCamp = this.buildingArr[i];
+			}
+		}
+		if (targetCamp && this.player.Resources.food >= 10) {
+			this.player.Resources.food -= 10;
+
+			let fren = new Entity();
+			let spawnPos = targetCamp.Position.x;
+
+			fren.addComponent(new Components.Position(spawnPos, 320));
+			fren.addComponent(new Components.Weapon());
+			fren.addComponent(new Components.Size(32, 32));
+			fren.addComponent(new Components.Velocity(Math.random() * 2 + 1));
+
+			fren.addComponent(new Components.Stats());
+			fren.addComponent(
+				new Components.Behaviour(spawnPos, 1000, 300, 20 + Math.random() * 100)
+			);
+
+			fren.addComponent(new Components.Movement());
+			fren.addComponent(new Components.Faction("playerUnit"));
+			fren.addComponent(
+				new Components.Sprite(
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanIdleFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanWalkFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanAttackFrames),
+					new PIXI.extras.AnimatedSprite(this.spritesObj.cavemanDeathFrames)
+				)
+			);
+			this.playerUnitArr.push(fren);
+			fren.Sprite.idle.animationSpeed = 0.2;
+			fren.Sprite.idle.play();
+			this.unitStage.addChild(fren.Sprite.idle);
+		}
+	}
 	update(dt) {
 		//	console.log(this.stage)
 		//Trottle interation updates
@@ -490,7 +415,7 @@ class Engine {
 			this.guiUpdater({
 				fps: (1 / dt) * 60,
 				command: this.player.Commands.mode,
-				food:this.player.Resources.food
+				food: this.player.Resources.food
 			});
 		}
 	}

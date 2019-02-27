@@ -80,19 +80,11 @@ class RenderSys {
 			let step = (parseInt(i) + 2) / this.backgroundArr.forest.length;
 			this.backgroundArr.forest[i].tilePosition.x = -camX * step;
 		}
-		// for (let i in this.backgroundArr.mountain) {
+		for (let i in this.backgroundArr.mountain) {
 
-		// 	if (camX<1200){
-		// 		this.backgroundArr.mountain[i].x=1200
-		// 	} else if (camX<2400){
-		// 		this.backgroundArr.mountain[i].x=2400-camX
-		// 		console.log(camX)
-		// 	} else{
-		// 		this.backgroundArr.mountain[i].x=0
-		// 	}
-		// 	let step = (parseInt(i) + 2) / this.backgroundArr.mountain.length;
-		// 	this.backgroundArr.mountain[i].tilePosition.x = -camX * step;
-		// }
+			let step = (parseInt(i) + 2) / this.backgroundArr.mountain.length;
+			this.backgroundArr.mountain[i].tilePosition.x = -camX * step;
+		}
 	}
 }
 
