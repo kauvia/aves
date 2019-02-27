@@ -78,6 +78,10 @@ class AISys {
 				unit.Movement.attacking = true;
 				if (!unit.Movement.prevAttacking) {
 					target.Stats.health -= unit.Weapon.damage;
+					if (target.Stats.health<=0){
+						this.player.Resources.food +=20
+					}
+
 					//			console.log(target.Stats.health)
 				}
 			}
@@ -118,6 +122,9 @@ class AISys {
 				unit.Movement.attacking = true;
 				if (!unit.Movement.prevAttacking) {
 					target.Stats.health -= unit.Weapon.damage;
+					if (target.Stats.health<=0){
+						this.player.Resources.food +=20
+					}
 					//			console.log(target.Stats.health)
 				}
 			}

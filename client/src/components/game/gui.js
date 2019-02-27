@@ -15,32 +15,53 @@ class GameGui extends Component {
 				<div
 					style={{
 						position: "absolute",
-						width: "800px",
-						height: "100px",
-						backgroundColor: "rgba(223,32,232,0.5)"
+						width: "1366px",
+						height: "25px",
+						backgroundColor: "rgba(30,30,30,0.9)",
+						color: "antiquewhite"
 					}}
 				>
-					<div>FPS : {this.props.tester.fps}</div>
-					<div>Command : {this.props.tester.command}</div>
-					<div>Food : {this.props.tester.food}</div>
+					<div className="container-fluid">
+						<div className="row">
+		
+							<div className="col">Command : {this.props.tester.command}</div>
+							<div className="col">Food : {this.props.tester.food}</div>
+							<div className="col-2">FPS : {`${this.props.tester.fps}`}</div>
+						</div>
+					</div>
 				</div>
 				<div
 					style={{
 						position: "absolute",
-						top: "100px",
+						top: "25px",
 						width: "100px",
-						height: "450px",
-						backgroundColor: "rgba(32,232,212,0.5)"
+						height: "850px",
+						backgroundColor: "rgba(30,30,30,0.9)"
 					}}
 				>
-					<div style={{ width: "100%",padding:"2px" }} >
-						<img style={{ width: "100%",border:"1px solid black" }} src="assets/gui/boy.png"onClick={this.handleChunks} data-id="boy" />
+					<div style={{ width: "100%", padding: "2px" }}>
+						<img
+							style={{ width: "100%", border: "1px solid black" }}
+							src="assets/gui/boy.png"
+							onClick={this.handleChunks}
+							data-id="boy"
+						/>
 					</div>
-					<div style={{ width: "100%",padding:"2px" }}>
-						<img style={{ width: "100%",border:"1px solid black" }} src="assets/gui/gungirl.png"  onClick={this.handleChunks} data-id="gungirl"/>
+					<div style={{ width: "100%", padding: "2px" }}>
+						<img
+							style={{ width: "100%", border: "1px solid black" }}
+							src="assets/gui/gungirl.png"
+							onClick={this.handleChunks}
+							data-id="gungirl"
+						/>
 					</div>
-					<div style={{ width: "100%",padding:"2px" }} >
-						<img style={{ width: "100%",border:"1px solid black" }} src="assets/gui/knight.png" onClick={this.handleChunks} data-id="knight"/>
+					<div style={{ width: "100%", padding: "2px" }}>
+						<img
+							style={{ width: "100%", border: "1px solid black" }}
+							src="assets/gui/knight.png"
+							onClick={this.handleChunks}
+							data-id="knight"
+						/>
 					</div>
 					<div>Hello</div>
 					<div>goodbye</div>

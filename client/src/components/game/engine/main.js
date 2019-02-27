@@ -579,7 +579,7 @@ class Engine {
 			this.player.addComponent(new Components.Position(50, 590));
 			this.player.addComponent(new Components.Weapon());
 			this.player.addComponent(new Components.Size(32, 32));
-			this.player.addComponent(new Components.Velocity(3));
+			this.player.addComponent(new Components.Velocity(5));
 
 			this.player.addComponent(new Components.Stats());
 			this.player.addComponent(new Components.Resources());
@@ -595,66 +595,94 @@ class Engine {
 					new PIXI.extras.AnimatedSprite(this.spritesObj.playerDeathFrames)
 				)
 			);
+			this.playerUnitArr.push(this.player);
 		}
-		this.playerUnitArr.push(this.player);
 
+		//spawn animals
+		for (let i = 0; i < 2; i++) {
+			for (let j = 0; j < 3; j++) {
+				let animal = new Entity();
+				let spawnPos = Math.random() * 200 + 1000 + 2000 * i;
+
+				animal.addComponent(new Components.Position(spawnPos, 590));
+				animal.addComponent(new Components.Weapon("paws", "melee", 10, 1));
+				animal.addComponent(new Components.Size(100, 100));
+				animal.addComponent(new Components.Velocity(Math.random() * 1 + 1));
+
+				animal.addComponent(new Components.Stats());
+				animal.addComponent(new Components.Behaviour(spawnPos));
+
+				animal.addComponent(new Components.Movement());
+				animal.addComponent(new Components.Faction("animal"));
+				let rand = Math.random();
+				if (rand < 0.1) {
+					animal.Weapon.damage=25;
+					animal.addComponent(
+						new Components.Sprite(
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dinoIdleFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dinoWalkFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dinoAttackFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dinoDeathFrames)
+						)
+					);
+				} else if (rand < 0.5) {
+					animal.addComponent(
+						new Components.Sprite(
+							new PIXI.extras.AnimatedSprite(this.spritesObj.catIdleFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.catWalkFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.catAttackFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.catDeathFrames)
+						)
+					);
+				} else {
+					animal.addComponent(
+						new Components.Sprite(
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dogIdleFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dogWalkFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dogAttackFrames),
+							new PIXI.extras.AnimatedSprite(this.spritesObj.dogDeathFrames)
+						)
+					);
+				}
+				console.log(animal)
+				this.npcUnitArr.push(animal);
+			}
+		}
 		//	spawn Enemy
 		for (let i = 0; i < 2; i++) {
-			let skelly = new Entity();
-			let spawnPos = Math.random() * 500;
-			spawnPos = 600;
+			for (let j = 0; j < 3; j++) {
+				let skelly = new Entity();
+				let spawnPos = Math.random() * 100 + 1600 + 2000 * i;
 
-			skelly.addComponent(new Components.Position(spawnPos, 590));
-			skelly.addComponent(new Components.Weapon("pikeaxe", "melee", 20, 25));
-			skelly.addComponent(new Components.Size(32, 32));
-			skelly.addComponent(new Components.Velocity(Math.random() * 1 + 1));
+				skelly.addComponent(new Components.Position(spawnPos, 590));
+				skelly.addComponent(new Components.Weapon("pikeaxe", "melee", 20, 25));
+				skelly.addComponent(new Components.Size(32, 32));
+				skelly.addComponent(new Components.Velocity(Math.random() * 1 + 1));
 
-			skelly.addComponent(new Components.Stats());
-			skelly.addComponent(new Components.Behaviour(spawnPos));
+				skelly.addComponent(new Components.Stats());
+				skelly.addComponent(new Components.Behaviour(spawnPos));
 
-			skelly.addComponent(new Components.Movement());
-			skelly.addComponent(new Components.Faction("enemy"));
-			skelly.addComponent(
-				new Components.Sprite(
-					new PIXI.extras.AnimatedSprite(this.spritesObj.zombiemaleIdleFrames),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.zombiemaleWalkFrames),
-					new PIXI.extras.AnimatedSprite(
-						this.spritesObj.zombiemaleAttackFrames
-					),
-					new PIXI.extras.AnimatedSprite(this.spritesObj.zombiemaleDeathFrames)
-				)
-			);
-			this.npcUnitArr.push(skelly);
+				skelly.addComponent(new Components.Movement());
+				skelly.addComponent(new Components.Faction("enemy"));
+				skelly.addComponent(
+					new Components.Sprite(
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleIdleFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleWalkFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleAttackFrames
+						),
+						new PIXI.extras.AnimatedSprite(
+							this.spritesObj.zombiemaleDeathFrames
+						)
+					)
+				);
+				this.npcUnitArr.push(skelly);
+			}
 		}
-
-		//Setup Background
-		//Forests
-		// if (this.level === 1) {
-		// 	for (let i = 1; i <= 4; i++) {
-		// 		let texture = PIXI.Texture.fromFrame("forest-" + i);
-		// 		let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 160);
-		// 		tilingSprite.y = 200;
-		// 		if (i < 4) {
-		// 			this.forestStage.addChild(tilingSprite);
-		// 		} else {
-		// 			this.foregroundStage.addChild(tilingSprite);
-		// 		}
-		// 		this.backgroundArr.forest.push(tilingSprite);
-		// 	}
-		// } else if (this.level === 2) {
-		// 	//MOUNTAINS
-		// 	for (let i = 1; i <= 6; i++) {
-		// 		let texture = PIXI.Texture.fromFrame("mountain-" + i);
-		// 		let tilingSprite = new PIXI.extras.TilingSprite(texture, 1200, 256);
-		// 		tilingSprite.y = 95;
-		// 		if (i < 5) {
-		// 			this.mountainStage.addChild(tilingSprite);
-		// 		} else {
-		// 			this.foregroundStage.addChild(tilingSprite);
-		// 		}
-		// 		this.backgroundArr.mountain.push(tilingSprite);
-		// 	}
-		// } else
 		if (this.level === 1) {
 			//Desert 1
 			for (let i = 1; i <= 5; i++) {
@@ -749,7 +777,7 @@ class Engine {
 	advanceLevel() {
 		this.level++;
 		this.buildingArr = [];
-		this.playerUnitArr = [];
+		//	this.playerUnitArr = [];
 		this.npcUnitArr = [];
 		console.log(this.stage);
 
@@ -762,6 +790,9 @@ class Engine {
 		this.stage.removeChildren();
 		console.log(this.stage);
 
+		for (let i in this.playerUnitArr) {
+			this.playerUnitArr[i].Position.x = Math.random() * 50;
+		}
 		this.player.Position.x = 50;
 
 		this.generateLevel();
@@ -769,7 +800,7 @@ class Engine {
 	}
 
 	buyUnits(type) {
-		console.log(type)
+		console.log(type);
 		let targetCamp;
 		for (let i in this.buildingArr) {
 			let distance = 1000000000000000;
@@ -781,7 +812,7 @@ class Engine {
 				targetCamp = this.buildingArr[i];
 			}
 		}
-		if (targetCamp && this.player.Resources.food >= 10 && type =="boy") {
+		if (targetCamp && this.player.Resources.food >= 10 && type == "boy") {
 			this.player.Resources.food -= 10;
 
 			let fren = new Entity();
@@ -812,7 +843,7 @@ class Engine {
 			fren.Sprite.idle.play();
 			this.unitStage.addChild(fren.Sprite.idle);
 		}
-		if (targetCamp && this.player.Resources.food >= 25 && type =="gungirl") {
+		if (targetCamp && this.player.Resources.food >= 25 && type == "gungirl") {
 			this.player.Resources.food -= 25;
 
 			let fren = new Entity();
@@ -843,7 +874,7 @@ class Engine {
 			fren.Sprite.idle.play();
 			this.unitStage.addChild(fren.Sprite.idle);
 		}
-		if (targetCamp && this.player.Resources.food >= 40 && type =="knight") {
+		if (targetCamp && this.player.Resources.food >= 40 && type == "knight") {
 			this.player.Resources.food -= 40;
 
 			let fren = new Entity();
