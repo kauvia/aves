@@ -172,9 +172,11 @@ class Engine {
 		//Gungirl
 		this.spritesObj.gungirlWalkFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.gungirlWalkFrames.push(
-				PIXI.Texture.fromFrame("gungirl Run (" + i + ").png")
-			);
+			if (i != 4) {
+				this.spritesObj.gungirlWalkFrames.push(
+					PIXI.Texture.fromFrame("gungirl Run (" + i + ").png")
+				);
+			}
 		}
 		this.spritesObj.gungirlAttackFrames = [];
 		for (let i = 1; i <= 3; i++) {
@@ -190,9 +192,11 @@ class Engine {
 		}
 		this.spritesObj.gungirlIdleFrames = [];
 		for (let i = 1; i <= 10; i++) {
-			this.spritesObj.gungirlIdleFrames.push(
-				PIXI.Texture.fromFrame("gungirl Idle (" + i + ").png")
-			);
+			if (i != 8) {
+				this.spritesObj.gungirlIdleFrames.push(
+					PIXI.Texture.fromFrame("gungirl Idle (" + i + ").png")
+				);
+			}
 		}
 		//Player
 		this.spritesObj.playerWalkFrames = [];
@@ -225,9 +229,11 @@ class Engine {
 		//cat
 		this.spritesObj.catWalkFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.catWalkFrames.push(
-				PIXI.Texture.fromFrame("cat Run (" + i + ").png")
-			);
+			if (i != 5) {
+				this.spritesObj.catWalkFrames.push(
+					PIXI.Texture.fromFrame("cat Run (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.catIdleFrames = [];
@@ -246,16 +252,20 @@ class Engine {
 
 		this.spritesObj.catDeathFrames = [];
 		for (let i = 1; i <= 10; i++) {
-			this.spritesObj.catDeathFrames.push(
-				PIXI.Texture.fromFrame("cat Dead (" + i + ").png")
-			);
+			if (i != 7) {
+				this.spritesObj.catDeathFrames.push(
+					PIXI.Texture.fromFrame("cat Dead (" + i + ").png")
+				);
+			}
 		}
 		//dino
 		this.spritesObj.dinoWalkFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.dinoWalkFrames.push(
-				PIXI.Texture.fromFrame("dino Run (" + i + ").png")
-			);
+			if (i != 6) {
+				this.spritesObj.dinoWalkFrames.push(
+					PIXI.Texture.fromFrame("dino Run (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.dinoIdleFrames = [];
@@ -274,9 +284,11 @@ class Engine {
 
 		this.spritesObj.dinoDeathFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.dinoDeathFrames.push(
-				PIXI.Texture.fromFrame("dino Dead (" + i + ").png")
-			);
+			if (i != 2) {
+				this.spritesObj.dinoDeathFrames.push(
+					PIXI.Texture.fromFrame("dino Dead (" + i + ").png")
+				);
+			}
 		}
 		//dog
 		this.spritesObj.dogWalkFrames = [];
@@ -288,13 +300,15 @@ class Engine {
 
 		this.spritesObj.dogIdleFrames = [];
 		for (let i = 1; i <= 10; i++) {
-			this.spritesObj.dogIdleFrames.push(
-				PIXI.Texture.fromFrame("dog Idle (" + i + ").png")
-			);
+			if (i != 4) {
+				this.spritesObj.dogIdleFrames.push(
+					PIXI.Texture.fromFrame("dog Idle (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.dogAttackFrames = [];
-		for (let i = 1; i <= 8; i++) {
+		for (let i = 1; i <= 7; i++) {
 			this.spritesObj.dogAttackFrames.push(
 				PIXI.Texture.fromFrame("dog Jump (" + i + ").png")
 			);
@@ -309,9 +323,11 @@ class Engine {
 		//jack
 		this.spritesObj.jackWalkFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.jackWalkFrames.push(
-				PIXI.Texture.fromFrame("jack Run (" + i + ").png")
-			);
+			if (i != 7) {
+				this.spritesObj.jackWalkFrames.push(
+					PIXI.Texture.fromFrame("jack Run (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.jackIdleFrames = [];
@@ -322,7 +338,7 @@ class Engine {
 		}
 
 		this.spritesObj.jackAttackFrames = [];
-		for (let i = 1; i <= 10; i++) {
+		for (let i = 2; i <= 10; i++) {
 			this.spritesObj.jackAttackFrames.push(
 				PIXI.Texture.fromFrame("jack Slide (" + i + ").png")
 			);
@@ -343,7 +359,7 @@ class Engine {
 		}
 
 		this.spritesObj.knightIdleFrames = [];
-		for (let i = 1; i <= 10; i++) {
+		for (let i = 1; i <= 9; i++) {
 			this.spritesObj.knightIdleFrames.push(
 				PIXI.Texture.fromFrame("knight Idle (" + i + ").png")
 			);
@@ -357,7 +373,7 @@ class Engine {
 		}
 
 		this.spritesObj.knightDeathFrames = [];
-		for (let i = 1; i <= 10; i++) {
+		for (let i = 2; i <= 10; i++) {
 			this.spritesObj.knightDeathFrames.push(
 				PIXI.Texture.fromFrame("knight Dead (" + i + ").png")
 			);
@@ -372,9 +388,11 @@ class Engine {
 
 		this.spritesObj.ninjagirlIdleFrames = [];
 		for (let i = 0; i <= 9; i++) {
-			this.spritesObj.ninjagirlIdleFrames.push(
-				PIXI.Texture.fromFrame("ninjagirl Idle__00" + i + ".png")
-			);
+			if (i != 4 || i != 5) {
+				this.spritesObj.ninjagirlIdleFrames.push(
+					PIXI.Texture.fromFrame("ninjagirl Idle__00" + i + ".png")
+				);
+			}
 		}
 
 		this.spritesObj.ninjagirlAttackFrames = [];
@@ -393,9 +411,11 @@ class Engine {
 		//ninjaman
 		this.spritesObj.ninjamanWalkFrames = [];
 		for (let i = 0; i <= 9; i++) {
-			this.spritesObj.ninjamanWalkFrames.push(
-				PIXI.Texture.fromFrame("ninjaman Run__00" + i + ".png")
-			);
+			if (i != 2) {
+				this.spritesObj.ninjamanWalkFrames.push(
+					PIXI.Texture.fromFrame("ninjaman Run__00" + i + ".png")
+				);
+			}
 		}
 
 		this.spritesObj.ninjamanIdleFrames = [];
@@ -414,13 +434,15 @@ class Engine {
 
 		this.spritesObj.ninjamanDeathFrames = [];
 		for (let i = 0; i <= 9; i++) {
-			this.spritesObj.ninjamanDeathFrames.push(
-				PIXI.Texture.fromFrame("ninjaman Dead__00" + i + ".png")
-			);
+			if (i != 7) {
+				this.spritesObj.ninjamanDeathFrames.push(
+					PIXI.Texture.fromFrame("ninjaman Dead__00" + i + ".png")
+				);
+			}
 		}
 		//robot
 		this.spritesObj.robotWalkFrames = [];
-		for (let i = 1; i <= 8; i++) {
+		for (let i = 1; i <= 7; i++) {
 			this.spritesObj.robotWalkFrames.push(
 				PIXI.Texture.fromFrame("robot Run (" + i + ").png")
 			);
@@ -435,9 +457,11 @@ class Engine {
 
 		this.spritesObj.robotAttackFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.robotAttackFrames.push(
-				PIXI.Texture.fromFrame("robot Melee (" + i + ").png")
-			);
+			if (i != 5) {
+				this.spritesObj.robotAttackFrames.push(
+					PIXI.Texture.fromFrame("robot Melee (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.robotDeathFrames = [];
@@ -463,16 +487,20 @@ class Engine {
 
 		this.spritesObj.zombiefemaleAttackFrames = [];
 		for (let i = 1; i <= 8; i++) {
-			this.spritesObj.zombiefemaleAttackFrames.push(
-				PIXI.Texture.fromFrame("zombiefemale Attack (" + i + ").png")
-			);
+			if (i != 4) {
+				this.spritesObj.zombiefemaleAttackFrames.push(
+					PIXI.Texture.fromFrame("zombiefemale Attack (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.zombiefemaleDeathFrames = [];
 		for (let i = 1; i <= 12; i++) {
-			this.spritesObj.zombiefemaleDeathFrames.push(
-				PIXI.Texture.fromFrame("zombiefemale Dead (" + i + ").png")
-			);
+			if (i != 3) {
+				this.spritesObj.zombiefemaleDeathFrames.push(
+					PIXI.Texture.fromFrame("zombiefemale Dead (" + i + ").png")
+				);
+			}
 		}
 		//zombiemale
 		this.spritesObj.zombiemaleWalkFrames = [];
@@ -484,9 +512,11 @@ class Engine {
 
 		this.spritesObj.zombiemaleIdleFrames = [];
 		for (let i = 1; i <= 15; i++) {
-			this.spritesObj.zombiemaleIdleFrames.push(
-				PIXI.Texture.fromFrame("zombiemale Idle (" + i + ").png")
-			);
+			if (i != 7) {
+				this.spritesObj.zombiemaleIdleFrames.push(
+					PIXI.Texture.fromFrame("zombiemale Idle (" + i + ").png")
+				);
+			}
 		}
 
 		this.spritesObj.zombiemaleAttackFrames = [];
@@ -498,9 +528,11 @@ class Engine {
 
 		this.spritesObj.zombiemaleDeathFrames = [];
 		for (let i = 1; i <= 12; i++) {
-			this.spritesObj.zombiemaleDeathFrames.push(
-				PIXI.Texture.fromFrame("zombiemale Dead (" + i + ").png")
-			);
+			if (i != 10) {
+				this.spritesObj.zombiemaleDeathFrames.push(
+					PIXI.Texture.fromFrame("zombiemale Dead (" + i + ").png")
+				);
+			}
 		}
 		//boy
 		this.spritesObj.boyWalkFrames = [];
@@ -526,9 +558,11 @@ class Engine {
 
 		this.spritesObj.boyDeathFrames = [];
 		for (let i = 1; i <= 15; i++) {
-			this.spritesObj.boyDeathFrames.push(
-				PIXI.Texture.fromFrame("boy Dead (" + i + ").png")
-			);
+			if (i != 5 || i != 15) {
+				this.spritesObj.boyDeathFrames.push(
+					PIXI.Texture.fromFrame("boy Dead (" + i + ").png")
+				);
+			}
 		}
 		//CAMPFIRE
 		this.spritesObj.campfireFrames = [];
@@ -888,6 +922,8 @@ class Engine {
 	};
 
 	advanceLevel() {
+		this.zombieInvasion = false;
+		this.spawnedZombies = false;
 		this.level++;
 		this.buildingArr = [];
 		//	this.playerUnitArr = [];
@@ -903,9 +939,9 @@ class Engine {
 		this.stage.removeChildren();
 		console.log(this.stage);
 
-		for (let i = this.playerUnitArr.length-1;i>=0;i--){
-			if(this.playerUnitArr[i].Stats.health<=0){
-				this.playerUnitArr.splice(i,1)
+		for (let i = this.playerUnitArr.length - 1; i >= 0; i--) {
+			if (this.playerUnitArr[i].Stats.health <= 0) {
+				this.playerUnitArr.splice(i, 1);
 			}
 		}
 
@@ -1039,9 +1075,12 @@ class Engine {
 			this.spawnZombies();
 		}
 		if (this.spawnedZombies && this.zombieInvasion) {
-			for (let i = this.nonzombieNum - 1; i < this.npcUnitArr.length; i++) 
-			{
-				this.npcUnitArr[i].Behaviour.spawnPoint+=this.npcUnitArr[i].Velocity.x
+			for (let i = 0; i < this.npcUnitArr.length; i++) {
+				if (this.npcUnitArr[i].Faction.belongsTo == "zombie") {
+					this.npcUnitArr[i].Behaviour.spawnPoint += this.npcUnitArr[
+						i
+					].Velocity.x;
+				}
 			}
 		}
 	}
@@ -1052,9 +1091,9 @@ class Engine {
 
 		for (let i = 0; i < playerNum * 3; i++) {
 			let zombie = new Entity();
-			let spawnPos = ranN(200)+10;
+			let spawnPos = ranN(200) + 10;
 
-			zombie.addComponent(new Components.Position(spawnPos, 585+ranN(10)));
+			zombie.addComponent(new Components.Position(spawnPos, 585 + ranN(10)));
 			zombie.addComponent(new Components.Weapon("fist", "melee", 15, 10));
 			zombie.addComponent(new Components.Size(32, 32));
 			zombie.addComponent(new Components.Velocity(2));
@@ -1065,7 +1104,7 @@ class Engine {
 			);
 
 			zombie.addComponent(new Components.Movement());
-			zombie.addComponent(new Components.Faction("enemy"));
+			zombie.addComponent(new Components.Faction("zombie"));
 			let rand = Math.random();
 			if (rand < 0.5) {
 				zombie.addComponent(
