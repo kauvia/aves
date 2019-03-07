@@ -26,14 +26,16 @@
   ],
   "main": "index.html",
   "window": {
-    "fullscreen": true,
+    "fullscreen": false,
     "height": 768,
     "width": 1366
   },
   "nwBuilder": {
     "//": "https://github.com/nwjs-community/nw-builder",
     "platforms": [
-      "linux64"
+      "linux64",
+      "win64",
+      "osx64"
     ],
     "version": "latest",
     "flavor": "normal",
